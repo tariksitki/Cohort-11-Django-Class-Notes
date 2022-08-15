@@ -1,0 +1,94 @@
+doc string:  func icin documentation yaziyoruz. Diger developer larin bu func i kullanabilmesi icin aciklama. Bunun icin """ """  kullaniriz. 
+
+mutable: stringler degistirilemez
+liste mutable dir. 
+tuple immutable degistirilemez. degistirilebilmesi icin yeni bir degiskene atanmasi gerekir. 
+
+b = a[:]
+bu copy gibidir. aynisini alir. bellekte yer kaplar 
+
+
+strip de () icine birsey koymazsak bosluklari siler. 
+
+rstrip
+lstrip var 
+
+python da 5 == "5"   False dur 
+
+
+set ler unordered dir.  
+düzenleme yapamayiz
+
+listeye eleman ekleme append
+
+
+pop da son eleman i alir. Bu eleman degiskene atanabilir. 
+
+pop un default index numarasi -1 dir. istersek index no verebiliriz. 
+
+
+bir reverse methodu var birde reversed func var. ikisini de deneyelim. 
+
+
+
+extend hali hazirdaki bir listenin sonuna ekleme yapar. list1 + list2 de ise yeni bir liste olusturur. 
+
+
+performans da tuple daha iyi 
+
+
+liste de bos liste bile yapsak hafiza da ona yer ayirir. tuple da ise öyle degil 
+
+
+tek elemanli tuple da "",  seklinde olabailir () olmak zorunda degil. 
+
+
+tuple lar immutable ama iterable dır
+
+
+dict ler de eger yazdigimiz isimde key yoksa hata aliriz. Bu nedenle get methodu kullanilir. get de ikinci parametre olarak, eger key yoksa su degeri dön denebilir. 
+
+
+dict lere index ile ulasamayiz. key ler ile ulasilabilir. 
+
+
+if de continue devam eder o degeri atlar 
+
+
+f string alternatif .format sona yazilir 
+birde % isareti var 
+
+
+*args  birden fazla arguman gelebilir ne kadar gelecegi belli degil 
+for i in args yapmayi deneyelim 
+
+
+arguman girerken user;   last_name ="tarik"  diyorsa buna kwargs denir. bunun da ne kadar olacagi belli degil ise **kwargs 
+
+
+args ve kwargs birbirine benzer. args lar positional dir. index ler ile ilerler. kwargs lar ise key ve value ciftleri seklinde gider. 
+
+
+
+decorator bizim func imizi alir func a hic dokunmaz. Bu func öncesinde ve sonrasinda bir islem yapar. 
+
+
+decorator  dont repeat yourself den gelir. 
+
+
+aynı işlemleri yapmamak için function kullanıyoruz.
+functionların işlenmesinde aynı işlemleri yapmamak için decorator kullanıyruz
+
+
+django kendisi bazi methodlar gelistirimis bu nedenle try except kullanmamiza gerek kalmiyor 
+
+
+pip npm ile ayni seydir. package manager dir. 
+
+
+biz bir paket yüklerken, pip freeze den dönen sonuc ile ayni format da yaziyoruz. 
+bu nedenle requirements.txt icine bunu yazariz. 
+
+
+
+
