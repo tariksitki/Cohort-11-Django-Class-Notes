@@ -1,0 +1,153 @@
+
+
+terminal de ciktilari daha temiz alabilmek icin hoca su kodu kullaniyor:
+import os
+os.system('cls' if os.name == 'nt' else 'clear')
+
+python da self js de this 
+
+
+oop kullanim maksadi  dry 
+benzer yapilari tek yerde toplama
+benzer ürünleri cikarmak icin bir kalip olusturma 
+
+
+mesela araba icin bir class olusturma
+ortak özellikleri olan nesneleri 
+
+
+oop bir paradigma bir yaklasim bir yogurt yeyis 
+olmazsa da olur ama isimizi kolaylasirir 
+
+
+python da class lar üzerine kurulmus bir dil 
+yani class based bir dil dir
+
+class larin en üstünde hiyerarsi de object bulunur 
+
+class ismi bütün dillerde büyük baslar
+
+new keyword burada yok js de var 
+
+
+class dan üretilen instance lar class ile irtibatini koparmaz. class da yapilan degisiklikler dogrudan yansir instance lara da. 
+
+instance attribute:
+bir instance de yapilan degisiklik ise class i ve diger instance lari etkilemez 
+
+
+class lar altinda atrribute tanimlandigi gibi func da yani method da tanimlanir 
+
+
+self, instance a göre degisen durumlari temsil eder 
+
+
+static method js de de var 
+
+
+instance lardan bagimisz olarak class altina yazdigimiz methodlar static 
+yani instance a göre degismez ve attribute almaz ve tüm instance larda aynidir. 
+
+
+init methodu nun js deki karsiligi constructor
+
+
+
+special methods : 
+
+self ismi degisebilir. degistiginde her yerde ayni isim kullanilmali 
+
+
+init methodu, instance create edilirken otomatik olarak calisir. 
+init olmadigi zaman biz manuel olarak set func yazmistik 
+
+
+init methodu icinde yazmis oldugumuz argument lari instance create ederken birebir vermemiz lazim eksik verirsek hata aliriz. 
+
+init icinde gender = "male" diyerek default deger verebiliriz. 
+
+
+
+
+str method:
+
+objeyi okunabilir bir şekle çevirir
+
+instance ismini direkt olarak print icine yazdigimizda okunakli bir sonuc alamayiz object in id si gelir. 
+bu nedenle str kullaniriz. 
+
+
+print(dir(Person)) init ve str buradan gelir. 
+
+
+biz str tanimladiktan sonra bize;
+
+print(person1.__str__()) calistirir 
+
+Dunder/Magic methods diye geçiyor arkadaşlar bunlar
+
+
+
+OOP Principles:
+
+1: encapsulation:
+
+siniflarinin methodlarin ne kadarinin görüntülenecegini ne kadarinin da korunacagini belirten methodlar 
+
+burada  __   olarak kullanilir. js de ise #  kullanilir. 
+_ ile olan herhangi bir koruma saglamaz. okuma ve degisiklik yapilabilir. 
+bunun kullanilma nedeni; bir uyaridir. bunu degistirmezsen iyi olur 
+__ kullanildiginda ise erisilmez  
+
+self._id = id desek yazmak zorundaydık değil mi
+
+
+
+
+2: abstraction:  (soyutlama)
+
+kullaniciyi gereksiz detaylardan soyutlamak icin kullanilan yapilar.
+gerekli olmayan yerlerin user dan gizlenmesi
+
+mesela sort methodu siralama yapiyor. ama bunu geri planda nasil yaptigini bilmiyoruz.
+user in burada calisan algoritmayi bilmesine de gerek yok. 
+
+abstraction in diger bir yönü:  iki farkli class da ayni özellikler varsa bunlardan abstarct class üretilir. abstarct class dan instance üretilmez. sadece iki class in ortak özelliklerini tutmaya yarar. 
+
+
+
+
+
+3: polymorfism:
+
+parent dan gelen yapi isimi görmüyorsa o zaman bunu customize edebiliriz
+overwrite
+
+birde overloading var. bir methodu farkli parametrelerle yeniden tanimlamak. bir class altinda birden methodu farkli parametreler ile birden fazla kez tanimlayabiliriz. buna overloading denir. 
+
+overloading  ve owerwrite   polimorfism in alt basliklaridir. 
+
+
+4: inheritance:
+miras yolu ile özelliklerin parent class dan child a aktarilmasi 
+
+python da inheritance yapmak icin class yanindaki () icine parent class ismi yazilir.
+
+parent dan alinacak attribute lar ya tek tek el ile yazilir yada super ile alinir 
+
+super keyword u miras alinacak olan ve parantez icine yazilan parent i temsil eder. 
+
+birden fazla class dan da miras alinabilir. 
+
+birden cok miras oldugunda super kelimesi ilk siradakini temsil eder. 
+
+super yerine parent in ismi de yazilabilir. 
+
+
+
+inner class:
+
+mro  method resolutionorder
+kalitim zinciri yani hiyerarsik sira 
+
+
