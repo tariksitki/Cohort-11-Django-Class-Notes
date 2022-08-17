@@ -1,0 +1,191 @@
+
+
+Api service lerinden sorumlu ekip backend ekibidir. 
+
+Data islenmemis veri kategorize edilmemis veridir.
+Veri islenince information olur
+kullanilinca tecrübe edilince knowledge oluyor 
+
+
+Oracle dünyanin en büyük veri tabani sirketi 
+
+db management sistem ne yapar 
+bizim icin crud islemleri yapar
+yedekleme
+yedekten geri cagirma
+erisim izinlerini düzenler
+yeni db ler olusturma 
+
+
+
+
+types of databases
+
+relational (default)
+no sql  non relational 
+hierachical db ler 
+network db ler 
+object oriented db ler 
+
+
+biz bir sorgu yazdigimizda bizim sorgumuzu anlayip db den istedigimiz veriyi getiren sisteme db management sistem denir. 
+
+
+it sektöründe calisiyorsak sql i kesinlikle bilmeliyiz
+
+
+non relational neden cikti: relational cok fazla veriyi bizim icin saklayabilir ama veri büyüdükce hantallasir. 
+relational lar güvenlidir. bizim icin veriyi güvenli tutacagini garanti eder. ama veri büyüdükce icinden az bir veri de istesek hantallasir. 
+güvenlik relational a göre bir tik asagidir non lar da.
+hiz icin bu ortaya cikmistir. 
+
+
+projelerde temel veri relational larda tutulur. 
+anlik user a verilmesi gereken veriler non larda tutulur. 
+
+
+non lar temel de key value sistemine göre tutarlar. 
+
+
+firebase mesela bir no sql veri tabanidir. 
+
+mongo db  cassandra (facebook a ait) no sql dir.
+
+
+non larda join kullanmaya gerek yok 
+
+mySql ve microsoft sql   relational dir. 
+
+
+sql ilk olarak ibm tarafindan icat edilmis 
+
+
+
+distinct  ayni verileri tekrar etmez unique
+
+
+
+transaction:  bankacilik islemleri yapilirken islem sekteye ugrarsa 
+eger tüm islemlerimiz icin okey aldiysak islem tamamlanir. 
+tüm kodlar basarili ise commit yapilir. 
+en ufak bir kod da hata olursa tüm islem geri alinir. 
+
+
+
+orm ;  sql sorgularini   python kodlarina cevirir 
+
+
+framework ler abstraction yapar bizim detaylarda bogulmamamizi saglarlar 
+
+
+four possible degrees:
+
+one to one :  bir tablodaki tek bir bilgiyi baska tablodaki tek bilgi ile eslestirme
+one to many : bir kullaniciya ait telefon bilgisi adres yas bilgisi gibi. bir tablodaki tek bir bilginin baska tablodaki birden cok bilgi ile eslesmesi
+many to one (ikisi ayni ama foreign key yeri ayri) : 
+many to many : bir ürün birden fazla kullanici tarafindan sepete eklenmis olabilir. bir kullanici da birden fazla ürün sepete eklemis olabilir. 
+
+
+sql tabiri db den farkli birsey dir. bunun hakkinda bir yazi okuyalim 
+
+
+
+postgre sql :
+
+
+bize karisik sorgulamalara izin verir 
+
+
+
+uuid :  id nin unique halidir 
+
+
+var char;   text  dir 
+
+char sabit string.  biz 10 dersek db 10 karakterlik yer kaplar. biz hic girmesek de 10 luk yer ayirir
+var char uzunlugu degisebilen string.  biz 64 karakter dedigimizde bizim icin 64 e kadar uzayabilen yer acar. biz hic veri  girmezsek veri uzunlugu 0 dir. 
+
+
+full join = cross join 
+
+
+
+user tablosunda kullanicilar primary key dir. 
+adres tablosunda adresler foreign key dir. 
+adresler user a baglanir tersi olmaz.
+yani foreign key ler primary e baglanir. 
+
+
+
+trigger:   mesela user daki bir veri silindi ise adres tablosundaki verileri de sil diyebiliriz.
+
+
+stack builder nedir bakalim 
+
+
+uzaktaki bir sunucuya baglanma  postgreSql ded;  servers üzerine sag tikla register de 
+
+
+db ler sql dilini kullanir bir de bunun üzerine kendi komutlarin ilave eder 
+
+
+
+
+pg admin:
+
+extensions farkli bir db ile iletisime gecmek icin 
+
+
+language:   default olarak plpgsql kullanir 
+
+
+aggregates:   sql dili üzerine kendimize ait eklemek istedigimiz kodlar buraya yazilir. 
+
+
+domains : harici bir alan olusturur  denemeler orada yapilir. 
+
+
+fts:  test lerde aramayi hizlandirmak icin bir yöntem 
+full test search 
+
+foreign tables baska db lerdeki tablolar ile iletisim icin 
+
+trigger func :   user silindiginde user a ait adresi de sil 
+
+
+views sanal tablolardir. 
+olusturdugumuz tabloyu görme ve ondan veri cekme icin kullanilir.
+
+
+restrict:  biz bir telefon ekliyorsak mutlaka ona ait bir user olamli gibi kati kural 
+
+set null :   biz user i sildigimiz zaman onun telefon numarasini null yap 
+
+iliski olusturma da iliski ismi tablo ismi ayni olmasin 
+
+
+cascade de;  user silindiginde tel numarasi varsa sil kati degil 
+
+
+auto increment : otomatik olarak id yi bir artirir 
+
+
+phpmyadmin (mysql icin)
+phppgadmin diye iki yazilim var (postgre sql icin)
+bunlarin da pgadmin gibi arayüzleri var 
+
+
+mysql oracle a satildi. satildiktan sonra maria db adinda mysql in aynisi piyasaya sürüldü.
+
+on_delete de on_update de cascade yapilir genelde. 
+update de cascade yapildiginda birinci tablodaki degisiklikte ikinci tabloda da degisiklik olur. 
+
+
+
+orm kullandigimiz sürece hangi dbms kullandigimizin hicbir önemi yok. 
+
+
+projede bir yere kadar mysql ile yaptigimizda projenin yarisindan sonra baska bir db ye gecis yapabiliriz. 
+
+
+
