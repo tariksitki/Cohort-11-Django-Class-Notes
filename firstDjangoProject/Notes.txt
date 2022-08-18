@@ -1,0 +1,27 @@
+
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+
+powershell de hata alanlar bunu yazsinlar
+
+
+Komutlar:
+
+
+1: python -m venv env
+2: env/Scripts/activate
+3: pip freeze
+4: pip install django
+5: django-admin startproject main . (sonunda . olmazsa ic ice iki tane main olur)
+(Nokta . bu durumda çok önemlidir çünkü; koda, Django'yu şu an bulunduğunuz dizine kurmasını söyler. (nokta . şu anki dizine bir kısayoldur).)
+6: python manage.py runserver (server ctrl c ile durur)
+7: python manage.py startapp firstApp
+8: pip freeze > requirements.txt 
+    (pip dosyalari yüklenirken pip freeze de yazilan format da yüklenir.)
+9: gitignore dosyasinin kodlarini internet de toptal dan aliyoruz. virtual env e "env" ismi veriyoruz. gitignore da hazir bunun ismi yazilmis oluyor. 
+
+gelen istek urls.py vasitasi ile yönlendirilir.
+
+
+son komutlarimizi görmek icin terminale history yazabiliriz. 
+
+yazilimda okunabilirlik önemli o nednele her app e ait urls.py kullaniriz. 

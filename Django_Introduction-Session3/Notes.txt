@@ -1,0 +1,118 @@
+
+Backend developer: sistemin mimarisini olusturan kisiye denir. 
+
+
+Django sadece backend framework degil.
+
+yüksek seviyeli bir web frame work udur. 
+
+mvt mimari yapisini kullanan bir framework dur. 
+
+
+Framework : bunu kullanmak istersek patron framework oluyor bunun kurallari disina cikamiyorum. oyunun kurallarini framework koyar oynamak istersek bu kurallara uymak zorundayiz
+
+Library : burada kod yaziyoruz kod yazarken library den istifade ediyoruz.
+
+ikisinin ortak yani daha önceden hazirlanmis bir kod var biz bu kodu kullaniyoruz.
+
+
+Framework : Komple bir sistemdir, ekosistemdir, bazı koşulları vardır. Bu framework’u kullanmak istiyorsak bu kurallara uymamız gerekiyor.
+Library: Örnek olarak react verebiliriz, JS library’dir. Onu alıp kullanabiliriz ve daha esnektir. Şartlarına zorlamıyor. Kullanırsan iyi olur der.
+
+
+
+Django free and open source web framework 
+
+her ücretsiz acik kod olmak zorunda degil 
+
+bir yazilim ücretsiz ise ücretsizsinizdir. 
+
+
+it is based on python 
+
+
+bir yazilim hem ücretsiz hem de acik kaynak ise neden güvenip bunu kullanalim. 
+Communuty den dolayi insanlar buna güvenerek yillarini bunun üzerine insaa eder. django nun da community si cok güclüdür. 
+
+youtube ve instagram da django kullanir 
+
+Büyük firmalar tüm projeyi tek bir framework üzerine kurmaz.
+
+
+Django' nun Avantajları
+Django' nun öğrenimi oldukça kolaydır.
+Django ile hazırlanmış web projeleri oldukça hızlıdır.
+Django projeleri modüler bir yapıya sahip olduğundan karmaşıklıktan uzak bir geliştirme ortamı sağlıyor.
+Django projesini oluşturduğunuz anda istediğiniz gibi özelleştirebilecek yönetim paneline sahipsiniz.
+Django framework'ü ile güvenlik açısından bir çok konu bizim adımıza düşünülmüş.
+Django framework'ünü kullanan oldukça popüler firmalar mevcut.
+Python popülerliğinden dolayı destek konusunda sıkıntı yaşanmıyor.
+Built in olarak icerisinde bir admin interface vardir. kendimiz yazmak zorunda kalmayiz.
+admin panel bir projede büyük bir yere sahiptir. 
+very scalable (ölceklenebilir)
+Security
+Binlerce ilave pakete sahiptir. 
+
+open source oldugu icin admin panel üzerinde degisiklik yapabiliriz. 
+
+
+güvenlik admin panel de calistigi icin admin paneli yazmak gercekten zordur. 
+
+
+user
+django 
+url 
+view
+model database
+database ile is yok ise direkt template
+
+
+virtual env;   globalden bagimsiz olarak bize bir calisma alani olusturur
+bunun cine django kurulur ve kendi projemizi olustururuz
+yine icine ihtiyacimiz olan paketleri ekleriz.
+
+
+virtual icinde eskiden olusturulan eski bir projeyi daha sonraki bir tarih de kullanmak istersek tüm kodu yeni sürüme  göre degistirmek gerekir.
+ama bu zor bir is. Bu nedenle django bize diyor ki eski vitual icinde kullandigin tüm sürüm kodlarin sürümlerini bir yere kaydet diyor. requirements gibi; ben senin yerine tüm islemi halledeyim diyor. iste bir virtual env icinde istedigimiz versiyonu kullanabiliyoruz. 
+
+İsmini bir caz gitaristinden alan Django,
+
+
+# VirtualEnv, projelerinizde gerekli olan paketleri sistemden bağımsız bir şekilde kurup, kullanmanızı sağlayacak sanal ortam sağlayan bir yapıdır.
+# Örneğin, projenizde kullanmak istediğiniz modül sisteminizde yüklü fakat siz projenizde daha düşük veya daha yüksek bir sürümünü kullanmak istediniz ama direk sisteminize kurmak yerine, virtualenv sanal ortamı üzerine kurarak işiniz bittiğinde kaldırabilirsiniz. Bu sayede sisteminizde karışıklık yaratmamış olursunuz. Yüklemeleri tek komut satırıyla kaldırabilirsiniz.
+
+
+bir projede birden cok app olabilir.
+bir app birden cok projede bulunabilir. 
+
+
+__init__.py  bir django projesi oldugunu gösterir
+
+python direkt bir web server da calismaz bunun icin wsgi gibi seylerden yardim alir. 
+
+
+
+
+Difference between project and app
+ 
+Bir proje tüm web sitesini temsil ederken, bir uygulama temelde projenin bir alt modülüdür.
+Tek bir proje birden fazla uygulama içerebilirken, bir uygulama farklı projelerde de kullanılabilir.
+Bir proje, tüm web uygulamasının bir planı gibidir, uygulamalar ise bir web uygulamasının yapı taşlarıdır.
+Genellikle içinde bir veya daha fazla uygulama bulunan web sitemiz için tek bir proje oluştururuz.
+Bir proje, tüm web uygulamasıyla ilgili yapılandırma ve ayarları içerir. Öte yandan, uygulamalar bağımsız olabilir veya birbirleriyle ilişkili olabilir
+
+
+
+python --version 
+
+
+python yüklerken karsimiza cikan panel de altta  path eklemesi de yapmaliyiz
+
+
+#virtualenv kurulumu
+# Macos => python3 -m venv env
+# Windows => python -m venv env
+
+
+
+
