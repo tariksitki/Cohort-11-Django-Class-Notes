@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 # from firstApp.views import home
 # from secondApp.views import secondHome
+from firstApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', home),
-    path('', include("firstApp.urls")),
+    # path('', include("firstApp.urls")),
     path('thirdHome', include("thirdApp.urls")),
+    path("drinks/", include("firstApp.urls"))
 
 ]

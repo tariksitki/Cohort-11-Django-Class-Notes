@@ -1,0 +1,182 @@
+
+Backend developer: sistemin mimarisini olusturan kisiye denir. 
+
+
+Django sadece backend framework degil.
+
+yüksek seviyeli bir web frame work udur. 
+
+mvt mimari yapisini kullanan bir framework dur. 
+
+
+Framework : bunu kullanmak istersek patron framework oluyor bunun kurallari disina cikamiyorum. oyunun kurallarini framework koyar oynamak istersek bu kurallara uymak zorundayiz
+
+Library : burada kod yaziyoruz kod yazarken library den istifade ediyoruz. Library nin kurallari o kadar kati degil.
+
+ikisinin ortak yani daha önceden hazirlanmis bir kod var biz bu kodu kullaniyoruz.
+
+
+Framework : Komple bir sistemdir, ekosistemdir, bazı koşulları vardır. Bu framework’u kullanmak istiyorsak bu kurallara uymamız gerekiyor.
+
+Library: Örnek olarak react verebiliriz, JS library’dir. Onu alıp kullanabiliriz ve daha esnektir. Şartlarına zorlamıyor. Kullanırsan iyi olur der.
+
+Die Regeln in Library sind nicht streng, aber flexibler. Während ich meinen Code schreibe, kann ich von Library profitieren und die hier gefundenen vorgefertigten Codes in mein eigenes Projekt integrieren.
+
+In Framework sind die Regeln strenger. Wenn ich Framework in meinem Projekt verwenden möchte, muss ich die Regeln hier befolgen.
+
+
+Django free(ücretsiz) and open source web framework 
+
+her ücretsiz acik kod olmak zorunda degil 
+
+bir yazilim ücretsiz ise ücretsizsinizdir. 
+
+
+it is based on python 
+
+
+bir yazilim hem ücretsiz hem de acik kaynak ise neden güvenip bunu kullanalim. 
+Communuty den dolayi insanlar buna güvenerek yillarini bunun üzerine insaa eder. django nun da community si cok güclüdür. yani insanlar projelerine basladiktan belirli bir süre sonra ortadan kalkacak olan bir sey kullanmak istemezler ve herhangi bir problemle karsilastiklarinda yardim alacaklari insanlar görmek isterler.
+
+youtube ve instagram da django kullanir 
+
+Büyük firmalar tüm projeyi tek bir framework üzerine kurmaz.
+
+
+Django' nun Avantajları:
+
+Django' nun öğrenimi oldukça kolaydır. (es ist einfach, Django zu lernen)
+Django ile hazırlanmış web projeleri oldukça hızlıdır. (mit django erstellte Projekte sind schnell)
+
+Django projeleri modüler bir yapıya sahip olduğundan karmaşıklıktan uzak bir geliştirme ortamı sağlıyor. (Da Django-Projekte modular aufgebaut sind, bieten sie eine Entwicklungsumgebung abseits von Komplexität.)
+
+Django projesini oluşturduğunuz anda istediğiniz gibi özelleştirebilecek yönetim paneline sahipsiniz. (Sobald Sie das Django-Projekt erstellt haben, haben Sie das Administrationspanel, das nach Ihren Wünschen anpassen kann.)
+
+Django framework'ü ile güvenlik açısından bir çok konu bizim icin önceden hazirlanmistir.
+(Mit dem Django-Framework sind viele Themen für Sicherheit bereits für uns vorbereitet.)
+
+Django framework'ünü kullanan oldukça popüler firmalar mevcut. (Es gibt ziemlich beliebte Unternehmen, die das Django-Framework verwenden. Zum Beispiel Instagram Facebook)
+
+Python popülerliğinden dolayı destek konusunda sıkıntı yaşanmıyor.
+Da Python sehr beliebt ist, ist auch Django sehr beliebt.
+
+Django hat eine sehr starke Community. damit wir bei google für jedes problem, auf das wir stoßen, antworten finden können.
+
+Built in olarak icerisinde bir admin interface vardir. kendimiz yazmak zorunda kalmayiz.
+admin panel bir projede büyük bir yere sahiptir. 
+
+very scalable (ölceklenebilir)
+
+Security (Sicherheit)
+
+Binlerce ilave pakete sahiptir. (es hat tausende von Paketen)
+
+open source oldugu icin admin panel üzerinde degisiklik yapabiliriz. 
+
+
+güvenlik admin panel de calistigi icin admin paneli yazmak gercekten zordur. 
+
+
+user
+django 
+url 
+view
+serializer
+model => database 
+database ile is yok ise direkt template
+
+
+virtual env;   globalden bagimsiz olarak bize bir calisma alani olusturur
+bunun icine django kurulur ve kendi projemizi olustururuz
+yine icine ihtiyacimiz olan paketleri ekleriz.
+
+Es schafft für uns einen Arbeitsplatz unabhängig vom Globalen.
+Wir installieren Django darin und erstellen unser eigenes Projekt.
+Auch hier fügen wir die benötigten Pakete hinzu.
+
+
+virtual icinde eskiden olusturulan eski bir projeyi daha sonraki bir tarih de kullanmak istersek tüm kodu yeni sürüme  göre degistirmek gerekir.
+ama bu zor bir is. Bu nedenle django bize diyor ki eski virtual icinde kullandigin tüm sürüm kodlarin sürümlerini bir yere kaydet diyor. requirements gibi; ben senin yerine tüm islemi halledeyim diyor. iste bir virtual env icinde istedigimiz versiyonu kullanabiliyoruz. 
+
+Wenn wir zu einem späteren Zeitpunkt ein altes, in virtuel  environment erstelltes Projekt verwenden möchten, ist es notwendig, den gesamten Code gemäß der neuen Version zu ändern. Dies ist jedoch eine schwierige Aufgabe. Aus diesem Grund speichern wir alle Pakete, die wir herunterladen, in einer Datei und wenn wir zu einem anderen Zeitpunkt an diesem Projekt arbeiten möchten, laden wir nur diese Datei hoch.
+
+İsmini bir caz gitaristinden alan Django. (Django hat seinen Namen von einem Gitarristen)
+
+
+# VirtualEnv, projelerinizde gerekli olan paketleri sistemden bağımsız bir şekilde kurup, kullanmanızı sağlayacak sanal ortam sağlayan bir yapıdır.
+
+# VirtualEnv ist eine Struktur, die eine virtuelle Umgebung bereitstellt, die es Ihnen ermöglicht, die in Ihren Projekten erforderlichen Pakete unabhängig vom System zu installieren und zu verwenden.
+
+# Örneğin, projenizde kullanmak istediğiniz modül sisteminizde yüklü fakat siz projenizde daha düşük veya daha yüksek bir sürümünü kullanmak istediniz ama direk sisteminize kurmak yerine, virtualenv sanal ortamı üzerine kurarak işiniz bittiğinde kaldırabilirsiniz. Bu sayede sisteminizde karışıklık olusturmamis olursunuz. Yüklemeleri tek komut satırıyla kaldırabilirsiniz.
+
+# Beispielsweise ist das Modul, das Sie in Ihrem Projekt verwenden möchten, auf Ihrem System installiert, aber Sie wollten eine niedrigere oder höhere Version in Ihrem Projekt verwenden, aber anstatt es direkt auf Ihrem System zu installieren, können Sie es auf der virtuellen Umgebung installieren und können Sie es entfernen, wenn Sie fertig sind. Auf diese Weise stiften Sie keine Verwirrung in Ihrem System. Sie können Installationen mit einer einzigen Befehlszeile deinstallieren.
+
+
+bir projede birden cok app olabilir. (Es kann sein, dass es viele Apps in einem Projekt gibt)
+bir app birden cok projede bulunabilir. (Eine App kann in mehreren Projekten vorhanden sein.) 
+
+
+__init__.py  bir django projesi oldugunu gösterir
+(es zeigt uns, dass es ein Django Projkt ist)
+
+python direkt bir web server da calismaz bunun icin wsgi gibi seylerden yardim alir. 
+
+
+Python funktioniert nicht direkt auf einem Webserver, dafür bekommt es Hilfe von Dingen wie wsgi.
+
+
+Difference between project and app
+ 
+Bir proje tüm web sitesini temsil ederken, bir uygulama temelde projenin bir alt modülüdür.
+Ein Projekt stellt die gesamte Website dar, während eine App im Grunde ein Teilmodul des Projekts ist.
+
+Tek bir proje birden fazla uygulama içerebilirken, bir uygulama farklı projelerde de kullanılabilir.
+Ein einzelnes Projekt kann mehrere Anwendungen enthalten, während eine Anwendung in verschiedenen Projekten verwendet werden kann.
+
+Bir proje, tüm web uygulamasının bir planı gibidir, uygulamalar ise bir web uygulamasının yapı taşlarıdır.
+Ein Projekt ist wie eine Blaupause der gesamten Webanwendung, während Anwendungen die Bausteine ​​einer Webanwendung sind.
+
+
+Genellikle web sitemiz için tek bir proje oluştururuz.
+Wir erstellen normalerweise ein einzelnes Projekt für unsere Website.
+
+Bir proje, tüm web uygulamasıyla ilgili yapılandırma ve ayarları içerir. Öte yandan, uygulamalar bağımsız olabilir veya birbirleriyle ilişkili olabilir
+Ein Projekt enthält Konfigurationen und Einstellungen für die gesamte Webanwendung. Andererseits können Anwendungen unabhängig oder miteinander verwandt sein.
+
+
+python --version 
+
+
+python yüklerken karsimiza cikan panel de altta  path eklemesi de yapmaliyiz
+
+
+#virtualenv kurulumu
+# Macos => python3 -m venv env
+# Windows => python -m venv env
+
+
+
+
+
+
+pip -V (pip version u ögrenmek icin)
+
+python -h  (help icin tüm option lari verir)
+
+env/Scripts/activate kodu yerine cd komutlari ile Scripts icerisine girip orada sadece 
+. activate komutu yazilabilir.
+
+kullandigimiz paketleri requirements a atmamiz heroku ya deploy esnasinda islerimizi cok kolaylastirir. aksi takdirde tüm paketleri versiyon lari ile birlikte manuel olarak yazmak zorunda kalacaktik.
+
+Indem wir die von uns verwendeten Pakete in Anforderungen(requirements) einordnen, wird unsere Arbeit beim Deployment in Heroku erheblich erleichtert. Andernfalls müssten wir alle Pakete mit ihrer Version manuell schreiben.
+
+sadece django-admin yazarsak bu kod ile calistirabilecegimiz kodlar cikar karsimiza 
+
+app olustururken alternatif komut:
+django-admin startapp myapp
+
+
+Not:  app lerimiz icinde database islemi yapmazsak installed app e app imizin ismini yazmasak da calisir. 
+
+
+python manage.py runserver 8080  farkli bir port da calismak icin 

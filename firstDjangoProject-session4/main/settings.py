@@ -32,6 +32,8 @@ DEBUG = True
 
 ## hangi domain lerden erisilmesini istiyorsak. örnek:
 # ALLOWED_HOSTS = ["www.google.com"]
+# kullanim olarak ["*"] sekli de vardir. herseye izin ver
+# birden cok url yazacak isek aralara , konulur.
 
 ALLOWED_HOSTS = []
 
@@ -49,7 +51,8 @@ INSTALLED_APPS = [
         ## my Apps:
     'firstApp',
     'secondApp',
-    'thirdApp'
+    'thirdApp',
+    'rest_framework',
 
 ]
 
