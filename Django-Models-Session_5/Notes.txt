@@ -1,0 +1,144 @@
+
+Polimorfizm biyolojide, iki veya daha fazla farklı fenotipin aynı tür popülasyonunda bulunmasıdır. Terim kökeni bakımından Latince "çok" (poli) ve "biçim" (morfizmos) kelimelerinin bir araya gelmesiyle oluşmuştur. Başka bir deyişle, birden fazla biçimin bulunması olarak da tanımlanabilir. Bu şekilde sınıflandırılabilmek için, biçimlerin aynı zaman diliminde aynı habitatta bulunmaları gerekir
+
+Features of Django:
+
+Templating
+Admin Interface
+Form Handling
+
+urls.py edite edildiginde;  development server otomatik olarak restart eder.
+
+
+createsuperuser komutu ile bize email name password sorar
+
+admin panelini kayitlarimizda crud islemleri icin kullanabiliriz. 
+
+
+it allows Python to recognise the folder as package (__init__.py)
+
+her bir model database de bir table a karsilik gelir. 
+
+
+django python dili ile yazilmis bir web framework udur.
+hem front end hem de back end dizayn edilebilir. 
+
+Django icinde de bootstrap kullanilabilir.
+
+backend esas görevi  db ile front end arasinda köprü vazifesi 
+fr den aldigi veriyi db ye kayit etmek
+db den aldigini fr ye aktarmak
+
+
+bizim pc mizin herbir yerini kapsayan seye global denir. env i global den bagimsiz olarak olusturuyoruz.
+bunun cesitli sebepleri var ama en önemli sebebi package management. package e her bir güncelleme geldiginde projemizin kodlarini güncelememek icin. 
+diger bir sebep hosting. uzaktan bir server da calistigimizda. daha detay sebepler var okuyalim. 
+
+
+python -m  deki -m birsey ifade ediyor ama kacirdim 
+
+Django template etiketleri Python benzeri yapıların HTML'ye aktarılmasını sağlar, böylece dinamik web sitelerini daha kolay ve hızlı oluşturabiliriz!
+
+
+Virtual environment tek amacı çalışma ortamının boyutunu küçültmek değildir. Virtual environment, farklı projelerdeki paketleri yönetmeye yarar. Virtual environment kullanmak, global olarak paket yükledikten sonra çıkabilecek sorunları ortadan kaldırır. Bu tür hatalardan kaçınmak için Python uygulamaları geliştirirken her zaman virtual environmentkullanılması önerilir.
+
+mac ve linuxlerde python2 default geliyor arkadaşalr onu kaldırıp sadece python3 yüklerseniz python3 yazamaya gerek yok
+
+pip activate ettigimizde eski versiyonu siler yeni versiyonu yükler. 
+
+
+pip install -r requirements.txt
+
+
+init.py  bunun bir django projesi oldugunu söyler
+
+
+urls.py  bizim santralimiz. gelen isterkler ilgili app e yönlendirilir. 
+
+react da app.js i sade tuttugumuz gibi burada main in urls.py ini sade tutariz. 
+
+history > history.txt
+
+history -20  komutu son 20 komutu calistirir 
+
+
+#activate komutu
+# MAC/Linuxsource env/bin/activate
+# bash  => source env/Scripts/Activate
+# windows  => env\Scripts\Activate
+
+
+projemiz tek dir. 
+buradaki app ler react daki component ler kadar kücük degildir daha büyüktür. 
+app ler portatif modüler dir. 
+mesela bir ödeme app i yaptik alip baska bir projede kullanabiliriz. 
+
+
+proje ev 
+app oda 
+
+server: bir tane pc dir belirli kapasitesi vardir. bu pc icine direkt django atinca calismaz. bunun icin bir ortam olusturmamiz gerekir. 
+Bunlari saglayan wsgi ve asgi dosyalaridir.
+
+server lar genelde linux tabanli olur. 
+
+eger db den veri cekme islemi varsa;  views func lari ile modeller araciligi ile db dn veri cekeriz. ve bunu json formatina dönüstürüp user a sunariz. 
+
+
+mvt de db ile iliskili yer models. 
+
+yansi: 
+https://lms.clarusway.com/mod/page/view.php?id=19925
+
+orm yapisi sadece django ya has birsey degil. 
+mongo.db de felan da var.
+orm django nun icinde hazir gelir. diger framework lerde disaridan yüklenir. 
+
+
+orm ;  python ile yazdigimiz sorgu komutlarini sql komutlarina dönüstürü.
+
+ORM sayesinde kod bloklarımız içerisinde yazdığımız SQL işlemlerini otomatik olarak sınıflarımız üzerinden gerçekleştirebiliriz. Oluşturduğumuz sınıflar veritabanındaki tablolara, sınıflara ait property’ler ise veritabanındaki ilgili tablonun kolonlarını temsil etmektedir. Bu sayede veritabanındaki verilere de ait olduğu sınıflar üzerinden erişilebilmektedir.
+
+
+Django'da bir model özel bir çeşit nesnedir database içinde kaydedilir.  Burası, kullanıcılar, blog gönderilerimiz, vb. hakkında bilgileri saklayacağımız yerdir. Verilerimizi depolamak için SQLite veritabanını kullanıyor olacağız. SQLite, Django için varsayılan veritabanıdır
+Veritabanındaki bir modeli, sütünları (alan adı) ve satırları (veri) olan bir hesap tablosuna (spreadsheet) benzetebiliriz.
+
+django;  id sütununu otomatik olusturur ve bunu primary key olarak belirler. 
+
+
+class larimiz bir kalip di.
+iste django da class dan ürettigimiz her bir instance database de bir satira tekabül eder. 
+class da bir tablo ya 
+
+
+django da custom field type da yazilabilir 
+
+resim ve resim gibi static file lar db de saklanmaz.
+büyük boyutlu verilerimiz genelde cloud daki depolama alanlarinda saklanir. bu depolarin adresini biz kendi db mizde saklariz. 
+bu adresler vasitasi ile user bizden resim istediginde o adrese yönlendirme yapariz. 
+
+
+charField bir filed type dir. 
+max_length=50 ise field option dir. 
+
+onetoone ilski:  sosyal media da bir kisiye ait tek bi profil olmasi 
+
+onetomany: bir user birden fazla post atabilir. bir post ise sadece bir user a ait olabilir. 
+bir kisinin ford ve mercedes arabalari olabilir. 
+o araba ise sadece bir kisiye ait olabilir. 
+Bir yazar birden fazla makale yazabilir.
+Bir makale yalnızca bir yazar tarafından yazılabilir.
+
+
+manytomany : developerlar ve framework ler. 
+bir developer birden cok framework bilebilir. ve bir framework birden cok developer tarafindan bilinebilir. 
+
+
+Meta bir inner class dir. ana class a ait konfigurasyonlar burada yapilir. 
+
+
+interview sorulari:  
+
+1: app ile project farki 
+2: django da modeller nedir ?
+
