@@ -1,0 +1,265 @@
+Pep8 ist ein Dokument, das 2001 von Guido van Rossum, Barry Warsaw und Nick Coghlan geschrieben wurde und Tipps und Prinzipien zum Schreiben von Python-Code enthält.
+
+Der Hauptzweck dieses Dokuments besteht darin, die Konsistenz(tutarlilik) und Lesbarkeit von Python-Code zu verbessern. Es steht für: (‘Python Enhancement Proposal’) Python Improvement Suggestions oder Python Verbesserungsvorschläge
+
+Her programlama dili için standart olan ve yazılan kodun anlaşılır olması için çoğu programcı tarafından kabul gören yazım kuralları vardır. Bu yazım kuralları Python için çok daha önemlidir çünkü diğer programlama dillerinden daha farklı bir sözdizimine (syntax) sahiptir.
+
+ Geliştirilen büyük ve arkasında birden fazla geliştiricinin olduğu projelerde, projenin sağlıklı ve hızlı ilerlemesi için öncelikle yazılan kodun anlaşılır ve okunabilir olması gerekir.
+
+Anlaşılır ve okunabilir bir Python kodu için uymamız gereken kurallar, pep8 adı altında karşımıza çıkıyor. Her bakımdan sağlıklı bir proje yürütmek istiyorsak PEP 8 kurallarına uygun şekilde ilerlemeliyiz.
+
+Zaten profesyonel bir geliştirme ortamında isek bu kuralları göz ardı etmemeliyiz. Küçük çaplı ve arkasında sadece sizin olduğunuz Python projelerinizde bile pep8 kurallarına olabildiğince uymaya çalışmalıyız.
+
+
+Es gibt Rechtschreibregeln, die für jede Programmiersprache Standard sind und von den meisten Programmierern akzeptiert werden, damit der geschriebene Code verständlich ist. Diese Syntax ist für Python viel wichtiger, da es eine andere Syntax als andere Programmiersprachen hat.
+
+
+Bei großen Projekten, die entwickelt werden und hinter denen mehr als ein Entwickler steht, muss der geschriebene Code zunächst verständlich und lesbar sein, damit das Projekt gut und schnell vorankommt.
+
+Die Regeln, die wir für einen verständlichen und lesbaren Python-Code beachten müssen, erscheinen unter dem Namen pep8. Wenn wir ein in jeder Hinsicht gesundes Projekt durchführen wollen, müssen wir nach den Regeln von PEP 8 vorgehen.
+
+
+Wenn wir uns bereits in einem professionellen Entwicklungsumfeld befinden, sollten wir diese Regeln nicht ignorieren. Wir sollten versuchen, die pep8-Regeln so weit wie möglich zu befolgen, selbst in kleinen Python-Projekten, hinter denen Sie der einzige sind.
+
+
+Warum lesbarer Code (Lesbarkeit) so wichtig ist
+Wir wissen, dass PEP 8 existiert, um die Lesbarkeit von Python-Code zu verbessern. Aber warum ist Lesbarkeit so wichtig?
+
+
+ Guido van Rossum sagt: „Code wird viel öfter gelesen als geschrieben.“ Das heißt, Code wird häufiger gelesen als geschrieben.
+
+
+Zum Beispiel verbringen wir ein paar Stunden damit, Code für einen Benutzerregistrierungs- und Anmeldeprozess zu schreiben, aber dann schreiben wir nichts weiter für diesen Prozess. Aber wir müssen den Code, den wir geschrieben haben, definitiv noch einmal lesen, oder jemand anderes wird es tun.
+
+
+Wenn wir uns dieses Stück Code auch nach langer Zeit ansehen, müssen wir uns daran erinnern, welche Funktion was macht oder warum wir einen bestimmten Abschnitt geschrieben haben.
+
+
+Ob für Python oder nicht, selbst wenn wir eine andere Programmiersprache verwenden, müssen wir uns an die Standards der verwendeten Sprache halten.
+
+
+
+PEP8 Kurallarını Ne Zaman Yok Sayabiliriz
+Pep-8 içerisindeki bazı kurallar aşağıdaki durumlar için yok sayılabilir.
+•    PEP 8`e uymak mevcut yazılımla uyumluluğu bozarsa.
+•    Üzerinde çalıştığımız projeyi kapsayan kod PEP8 ile tutarsızsa.
+•    Projenin daha eski python sürümleri ile uyumlu kalması gerekiyorsa.
+
+
+Wann können wir PEP8-Regeln ignorieren?
+
+Einige Regeln in Pep-8 können für die folgenden Situationen ignoriert werden.
+• Die Einhaltung von PEP 8 beeinträchtigt die Kompatibilität mit vorhandener Software.
+• Wenn der Code für das Projekt, an dem wir arbeiten, nicht mit PEP8 übereinstimmt.
+• Wenn das Projekt mit älteren Python-Versionen kompatibel bleiben muss.
+
+
+
+
+was sind die Regeln von Pep8:
+
+Girintileme işlemleri (Einrückungsoperationen)
+Çıkıntı veya boşluk kullanımları ('tab' ve 'space')  Verwendung von Vorsprüngen oder Leerzeichen ('Tabulator' und 'Leerzeichen')
+
+Satır Uzunlukları  Zeilenlängen
+Boş satırların kullanımı  Verwendung von Leerzeilen
+Doğru 'import' etme şekilleri  Korrekte Wege zum "Importieren"
+Tırnak işareti kullanımı  Verwendung von Anführungszeichen
+İfadeler arasındaki boşluk kullanımları  Verwendung von Leerzeichen zwischen Anweisungen
+
+Yorum satırlarının doğru kullanımı  Korrekte Verwendung von Kommentarzeilen
+
+Kullanılmaması gereken karakterler  Zeichen, die nicht verwendet werden sollten
+
+
+Değişken isimlendirme kuralları  Namenskonventionen für Variablen
+
+
+
+
+
+
+Decorators in Python:
+
+Decorators sind Funktionen, die eine Funktion als Parameter annehmen und eine Funktion zurückgeben.
+
+
+Birinci Sınıf Nesne Nedir?
+Dinamik olarak oluşturulabilen, yok edilebilen, bir fonksiyona parametre olarak verilebilen ya da bir fonksiyondan sonuç değeri olarak döndürülebilen, değişkenlerle aynı haklara sakip varlıklara birinci sınıf nesne ya da birinci sınıf vatandaş denir.
+
+
+
+Was ist ein erstklassiges Objekt?
+
+Entitäten mit den gleichen Rechten wie Variablen, die dynamisch erstellt, zerstört, als Parameter an eine Funktion übergeben oder als Ergebniswert einer Funktion zurückgegeben werden können, werden erstklassige Objekte oder erstklassige Bürger genannt.
+
+
+
+Aşağıdaki örnekte, önce iki sayıyı toplayan add fonksiyonunu oluşturuyoruz. Ardından fonksiyonun kendisini ve ismini (__name__ özelliğinde tutulur), parametre verip çalıştırarak sonucunu ve veri tipini yazdırıyoruz. Sonra parametre olarak fonksiyon alan bir fonksiyon alıp, verilen diğer parametreleri bu fonksiyona göndererek çalıştırıp, sonucunu döndürüyoruz. Son olarak bu işlemin de sonucunu yazdırarak fonksiyonu hafızadan siliyoruz.
+
+
+
+def add(x, y):
+    return x + y
+
+print('add: {}'.format(add))
+print('add.__name__: {}'.format(add.__name__))
+print('add(2, 3): {}'.format(add(2, 3)))
+print('type(add): {}'.format(type(add)))
+
+
+def call_function(func, *args):
+    return func(*args)
+
+print('call_function(add, 2, 3): {}'.format(
+    call_function(add, 2, 3)
+))
+
+del add
+
+
+
+
+
+Dekoratörler, temelde alınan parametreyi iç fonksiyona (wrapper) gönderen ve geriye de bu fonksiyonu döndüren fonksiyonlardır. İç fonksiyonları dekoratör yazmadığınız durumlarda da kullanabilirsiniz.
+
+
+Decorators sind im Grunde Funktionen, die den empfangenen Parameter an den Wrapper senden und diese Funktion zurückgeben. Sie können auch innere Funktionen verwenden, wenn Sie keine Decorators schreiben.
+
+
+
+
+
+Kapsülleme (Encapsulation)
+
+Yazdığınız fonksiyonları, dışarıdan gelecek bir müdahaleden korumak için kullanabilirsiniz. Herhangi bir iç fonksiyon global alandan erişilemeyecektir.
+
+
+Verkapselung:
+
+Sie können die Verkapselung verwenden, um die von Ihnen geschriebenen Funktionen vor Eingriffen von außen zu schützen. Alle internen Funktionen sind aus dem globalen Bereich nicht zugänglich.
+
+
+
+Wiederhole dich nicht: DRY
+
+Wenn sich innerhalb der Funktion wiederholende Codeblöcke befinden, können Sie diese zu einer internen Funktion machen, wodurch die Lesbarkeit erhöht und das DRY-Prinzip eingehalten wird.
+
+
+
+
+
+Dekoratörler:
+
+Dekoratörler, kapsamasını istediğimiz fonksiyonların üzerine, önünde @ karakteri konularak yazılır. Buna pie syntax denir. Aslında bu yazım stili sadece bir kısayoldan ibarettir.
+
+
+
+Decorators werden durch das @-Zeichen vor den Funktionen, die wir einbinden möchten, überschrieben. Dies wird als Pie-Syntax bezeichnet. Eigentlich ist dieser Schreibstil nur eine Abkürzung.
+
+
+
+# Yöntem 1:
+@decorator
+def func():
+    pass
+
+# Yöntem 2:
+def func():
+    pass
+    
+func = decorator(func)
+
+
+
+Yukarıdaki örnekte; üstteki pie syntax ile yazılmış dekoratörün yaptığı iş aslında hemen altındaki bölümün yaptığı iş ile aynıdır. Kullanım kolaylığı sağlamak ve okunabilirliği artırmak açısından böyle bir söz dizimi tercih edilmiş.
+
+
+
+*******************************
+
+Bir dekoratör kullanıldığında, kullanılan fonksiyon dekoratöre parametre olarak düşer. Dekoratör içinde bir kapsayıcı (wrapper) iç fonksiyon oluşturur ve asıl fonksiyona gelen parametreleri bununla yakalarız. Dilediğimiz işlemleri yaptıktan sonra iç fonksiyondan, parametre olarak gelen asıl fonksiyondan dönen değeri, dekoratörden ise iç fonksiyonun kendisini geriye döndürürüz.
+
+
+
+Wenn ein Decorator verwendet wird, fällt die verwendete Funktion als Parameter in den Decorator. Wir erstellen eine Wrapper-Innenfunktion innerhalb des Decorators und erfassen damit die Parameter der eigentlichen Funktion. Nachdem wir die gewünschten Operationen ausgeführt haben, geben wir den Wert zurück, der von der eigentlichen Funktion zurückgegeben wird, die als Parameter von der inneren Funktion kommt, und die innere Funktion selbst vom Decorator.
+
+
+
+
+
+
+Python’da pass deyimi nedir? :
+
+
+Python programlamasında pass ifadesi null değer atama için kullanılır. Python’daki bir açıklama ve geçiş ifadesi arasındaki fark, yorumlayıcı bir yorumu tamamen yok sayırken, geçişin göz ardı edilmemesidir.
+
+Ancak, geçiş yürütüldüğünde hiçbir şey olmuyor. Hiçbir işlem yapılmaz.
+
+
+
+
+In der Python-Programmierung wird die pass-Anweisung verwendet, um Nullwerte zuzuweisen. Der Unterschied zwischen einem Kommentar und einer pass-Anweisung in Python besteht darin, dass der Interpreter einen Kommentar vollständig ignoriert, während dies bei pass nicht der Fall ist.
+
+
+Genellikle yer tutucu olarak kullanırız.
+
+Varsayalım ki henüz uygulanmayan bir döngü veya fonksiyonumuz var, ancak gelecekte uygulamak istiyoruz. Boş bir vücudu olamaz. Tercüman hata verir. Bu yüzden, pass ifadesini hiçbir şey yapmayan bir gövde oluşturmak için kullanırız.
+
+
+
+Angenommen, wir haben eine Schleife oder Funktion, die noch nicht implementiert ist, die wir aber in Zukunft implementieren möchten. Es kann keinen leeren Körper haben. Der Übersetzer gibt einen Fehler aus. Also verwenden wir die pass-Anweisung, um einen Körper zu erstellen, der nichts tut.
+
+
+
+Pass deyimi gelecekteki kodlar için yer tutucu olarak kullanılır.
+
+Pass deyimi yürütüldüğünde hiçbir şey olmaz, ancak boş koda izin verilmediğinde hata almaktan kaçınırsınız.
+
+Boş kodlara döngülerde, işlev tanımlarında, sınıf tanımlarında veya if ifadelerinde izin verilmez.
+
+
+Die Pass-Anweisung wird als Platzhalter für zukünftigen Code verwendet.
+
+Bei der Ausführung der pass-Anweisung passiert nichts, aber Sie vermeiden, dass ein Fehler auftritt, wenn Nullcode nicht zulässig ist.
+
+Leere Codes sind in Schleifen, Funktionsdefinitionen, Klassendefinitionen oder if-Anweisungen nicht erlaubt.
+
+
+
+
+
+
+What is a Foreign Key in SQL?
+
+
+Foreign Key (yabancı anahtar) ikincil anahtar olarak da ifade edilmektedir. Bir veri tablosuna girilebilecek değerleri başka bir veri tablosundaki alanlarla ilişkilendirmeye yarar. Özetle, başka bir tablonun birincil anahtarının bir diğer tablo içerisinde yer almasıdır. Çoğunlukla bir ana tablo (parent) ile alt tablonun (child) ilişkilendirilmesinde kullanılır. Bu sayede olası veri tekrarlarının önüne geçilebilmekte ve ilerleyen zamanda söz konusu olabilecek güncellemelerde ilgili verilerin her yerde güncellenmesi sağlanabilmektedir.
+
+Fremdschlüssel wird auch als Sekundärschlüssel bezeichnet. Es dient dazu, Werte, die in eine Datentabelle eingegeben werden können, Feldern in einer anderen Datentabelle zuzuordnen. Zusammenfassend ist der Primärschlüssel einer anderen Tabelle in einer anderen Tabelle enthalten. Es wird hauptsächlich verwendet, um eine übergeordnete Tabelle mit einer untergeordneten Tabelle zu verknüpfen. Auf diese Weise können mögliche Datenwiederholungen verhindert und die relevanten Daten bei zukünftigen Updates überall aktualisiert werden.
+
+Bir tablo da primary key olan bir deger baska bir tablo ile iliski kurulurken ikinci tabloda foreign key olarak belirlenir. Bu nedenle birinci zablo da unique olmasi gereken bu deger ikinci tablo da birden cok veri icin kullanilabilir. 
+
+Mesela:
+Ikinci tablomuz cinsiyet tablosu olsun. erkeklerin id si bu tabloda 1 olsun.
+Birinci tablomuzda users tablosu olsun. ikinci tabloda 1 degeri unique dir. ama birinci tabloda erkek olan her user in cinsiyeti 1 olacaktir. 
+Iste burada 1 degeri ikinci tabloda primary key iken ikinci tabloda foreign key olur. 
+
+
+
+
+
+****************************************
+
+Is arkadasinla farkli fikirde oldugunda ne yaparsin?
+
+Ich denke, dass hier nicht zuerst das persönliche Nutzen, sondern das Unternehmensinteresse zu berücksichtigen ist. Zunächst denke ich ausführlich über das Thema nach, dass ich mit meinem Freund anderer Meinung bin. und dann spreche ich ausführlich mit meinen Kollegen über dieses Thema. Wenn meine Meinung für die Interessen des Unternehmens vorteilhafter ist, werde ich dies veranlassen. Wenn der Gedanke meines Freundes hilfreicher ist, werde ich es tun lassen.
+
+
+
+
+
+
+
+
+
+
