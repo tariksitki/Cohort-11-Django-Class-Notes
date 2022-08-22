@@ -1,0 +1,190 @@
+terminal de komut yazarken basina # koydugumuzda bu o komutun gerceklesmeyecegini bildirir.
+
+"GET / HTTP/1.1" 200 10681
+get sorgusu yaptim
+su protokolü kullandim 
+200 basarili yanit aldim
+10681 karakter okudum
+
+
+internette char count yazip karakterleri saydirma yapilabilir. 
+bunun icin browser da saga tiklayip source koda gitti
+
+
+
+400 client error
+500 server error
+
+
+django da bir siteye girince bizi karsilayan dosya url.py  main icindeki 
+burasi danisma santral 
+
+
+views.py  görünümle ilgili tüm kodlarin yazildigi dosya 
+url.py user a neyi gösterecegini views e sorar 
+view de data alisverisini models den yapar. 
+
+
+    path('admin/', admin.site.urls),  ## admin ile baslayan isteklere bu baksin
+    path('', home ),
+    path("fscohort", include("fscohort.urls"))
+
+    ### normalde geri planda calisan sey söyle:  include olan yer de bir array var ve bu array icinde birsen cok path var. iste hepsini buraya yazmamak icin burada sadece yönlendirme yapiyoruz array icindeki path leri de fscohort un urls in de yaziyoruz.
+    
+
+
+app icinde import yaparken 
+
+from fscohort.views import home   ile 
+from .views import home   ayni seylerdir. 
+
+
+oop deyince akla class gelir 
+framework deyince akla model gelir 
+
+oop nin cikisi:  arabalar mimarlar
+
+model kodlama = class kodlama 
+
+codeigniter  laravel den daha köklü ve daha stabil 
+
+
+migrate komutlari iicn app imizin adini installed app e yazariz. yani diyoruz ki benim bu app imi de tara 
+
+
+makemigrations :   db mize yeni seyler ekledigimizde kullanilir. bu komut ile yeni degisiklikleri yakalatiriz. 
+
+migrate komnutu ile ise yaptigimiz degisiklikleri update ettiririz. 
+
+django gettext : projemizde birden cok dil kullandigimizda
+func dan sonra acilan ()  in önüne _   konularak calisir. 
+bir translate dosyamiz olur.  ger kelime bu dosyada varsa translate edip gösterir yoksa aynisini gösterir. 
+
+shell test ortami. admin panel de test ortami 
+normal projelerde sikete ait bir test paneli yapilir. 
+professional hayatta pek kullanilmaz. 
+shell python kodlarinin gecerli oldugu bir ortam 
+
+
+biz sadece bir model olusturuyoruz. bundan sonra bu model db de bir tablo olusturur admin panel de kendini gösterir. bizi cok büyük bir yükten kurtarir. 
+
+
+
+orm: 
+
+sen projene odaklan isine bak isin db kismi bende der 
+biz bildigimiz gibi python kodu yazariz 
+geri kalan kismi o halleder. 
+
+
+
+from fscohort.models import Student
+
+student model ini import ettik 
+
+s1 = Student(first_name = "Ali", last_name = "Veli", number = "12345")
+
+s1.save()
+
+
+yapilan degisiklikleri db ye kaydetmek icin de save calistirilir. 
+
+s1.first_name = "mehmet"
+
+s1.save()
+
+
+migrate komutlari deyince akla db deki yapi degisiklikleri gelir. 
+data degisiklikleri degil yapi 
+
+create komutu kullaninca save e gerek kalmaz 
+
+s2 = Student.objects.create(first_name="Kadir", last_name="abc", number=11111)
+
+
+all = Student.objects.all()
+
+for i in all:   enter 
+4 bosluk print(i)  enter 
+birdaha enter 
+
+yada for i in all : i  buda calisir. 
+
+
+g1 = Student.objects.get(number=11111)
+
+get sadece bir tane kayit getirir. 
+eger numarasi 1 olan birden cok kisi varsa get hata verir. bu durumda filter kullanilir. 
+
+
+filter sorguya uyan tüm kayitlari getirir 
+
+exclude da sorguya uymayan tüm kayitlari getirir 
+
+
+g1 = Student.objects.get(number=11111)
+
+
+f3 = Student.objects.filter(first_name__startswith="a")
+
+__  bu methodlara dunder method lar denir. 
+
+
+
+
+ana sayfaya gelince Hello yazan sayfa da karkter sayisi 15 cikar. 
+burada 13 karakter var 
+
+
+fotolar icin python -m pip install Pillow
+
+eger modellere foto ekledik ve hata vermedi ise migrate komutu ister 
+
+
+pillow bizim resim islemlerimizi kontrol eden bir modüldür. modül 
+
+
+db de fotonun adresini tutar resim ise fiziksel olarak media icine atilir. 
+
+
+media ile ilgili url ler yazilmazsa resim acilmaz 
+
+
+settings.py altinda 
+MEDIA_URL = "media/"   yazilir. 
+
+
+
+otomatik id olusma sebebi   settings.py daki su kod 
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CREATE TABLE "relations_language" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(50) NOT NULL, "creator_id" bigint NOT NULL UNIQUE REFERENCES "relations_creator" ("id") DEFERRABLE INITIALLY DEFERRED)
+
+sqlite da bakarsak bu bilgileri görecegiz. 
+
+
+manytomany de on delete olmaz. 
+cünkü bir veri birden cok veriye ait. eger bir veri silindiginde karsiligini silersek, o verinin ait oldugu diger veriler karsiliksiz kalir. 
+
+manytomany tablosunu clarusway github dan bak 
+
+many to many de 3 tablo olur. 
+
+ctrl tusu ile birden cok secim yapilabilir. 
+
+
+settings.py da database ayarlari üstündeki linke tiklayraak gidebiliriz
+
+
+cascade user ismi silinirse bu user a ait veriler de silinsin kalmasin 
+
+
+postgre baglamak icin ders sonu kaydini izle 
+
+
+postgre ile iletisime gecebilmek icin 
+
+pip install psycopg2
+
