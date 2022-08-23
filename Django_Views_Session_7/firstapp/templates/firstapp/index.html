@@ -1,0 +1,49 @@
+
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'firstapp/style.css' %}">
+</head>
+
+<!-- settings.py da static ile ilgili yazi oldugundan otomatik olarak django static isimli klasörlerin icine bakiyor.  -->
+
+<h1> This Page is Firstapp Index Html Page </h1>
+
+<h1> {{ request.user }} </h1>
+
+<h2> {{ title | title }} </h2>
+
+<h3> {{ dict1.django }} </h3>
+
+<h3> {{ my_list }} </h3>
+
+<!-- filtrelere docs dan bakalim  -->
+
+
+<ul>
+    {% for i in my_list %}
+    
+    <li> {{ i }} </li>
+
+    {% endfor %}
+</ul>
+
+
+
+{# single line #}
+
+
+{% comment %}
+    this 
+    is
+    multiline
+    comment
+{% endcomment %}
+    
+
+<img src="{% static 'firstapp/djangog.jpg' %}" alt="foto1" width="300">
+
+
+<br><br><br>
+
+<img src="{% static 'firstapp/django.jpg' %}" alt="foto2" width="300">

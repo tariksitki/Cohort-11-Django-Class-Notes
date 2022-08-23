@@ -1,0 +1,85 @@
+
+
+View:  Projenin logic i mantigi burada gerceklesir.
+
+modele ne gidecek model den ne gelecek bu gelen veri template e verilecek mi bunlari yapar.
+
+https://app.peardeck.com/student/tmdbkjpkm
+
+
+it will request from model und pass it to template 
+
+
+variables {{ }}
+tags  {%  %}
+filters {{ | }}
+
+. notation kullanilir 
+
+context dict yapisi icinde olmali 
+
+context mantığını reacttaki navigate-state mantığı gibi düşünebilrsiniz template e datayı gönderiyoruz template de karşılayıp kullanıyoruz
+
+Django, yaratıcı bir şekilde Django Template Language (DTL) olarak adlandırılan kendi template sistemi için yerleşik arka uçları gönderir.
+
+interview da render sormuslar kendi kelimelein ile
+tabi anahtar kelimeleri ararlar 
+
+
+https://www.codecademy.com/learn/templates-in-django/modules/django-templates/cheatsheet
+
+
+Önemli:  django  docs dan bilgi alirken sag alt köse de hangi versiyona ait oldugu yazar.
+eger aldigimiz kod calismiyor ise burayi kontrol etmemiz gerekir. 
+
+
+docs dan filter lara bakalim 
+
+
+https://www.w3schools.com/django/django_template_tags.php
+
+
+{{description |truncatechars:50}}
+örneğin react ta yaptığınız blogapp de dashboardda işte açıklamayı 50karakter göster sonra ... nokta koy un yerine bu komutu yazdığımızda aynı işlemi yapıyor
+
+
+kodlar daki python yerine sadece p yazsak da kabul eder 
+
+
+requirements da >>  iki tane kullanirsak eskilerini siler üzerine yazar. 
+
+eger sirketimizin projesinde env in ismi farkli ise gitignore a ekleyecegiz. 
+
+django-admin yazarsak bununla birlikte calisacak kodlar cikar. 
+
+
+debug false yapilirsa   allowed host a birsey ler yazilmasi gerekir. 
+
+
+urls de name kismi unique olmali 
+diyelim ki index.html in var index.htmlden product html e gitmek istiyorsun
+
+
+reacttaki
+<Route path="product"> e karşılık geliyor gibi düşünebilirsin mesela navagate("product") şeklinde gidiyorduk Django da name patterniyle yakalayıp gidiyoruz
+
+
+return HttpResponse(data, content_type='application/json')
+
+
+
+templates klasörü app icinde ve onun icinde yine app ismi ile bir klasör aciyoruz
+django nun karisiklik yapmasini engellemek icin 
+benzer sayfalardaki cakismalar olmasin diye 
+
+
+Django uygulamalarında geriye bir html sayfası döndürmek için render() metodunu kullanıyor olmalıyız.
+render() metodu ilk parametre olarak uygulamaya yapılan request nesnesini  parametre olarak alması gerekiyor. İkinci parametre olarak ise döndürülecek html sayfasının ismini alır.
+
+
+views içinde app/index.html yerine , ./templates/app/index.html yazınca "TEMPLATE DOES NOT EXIST" hatası verdi bende bilginize
+
+
+backend de kullandigimiz comment leri frontend e yansitmaz
+bu nedenle django ile yapilan comment ler ekran da görünmez 
+

@@ -1,0 +1,9 @@
+   1 python -m venv env
+   2 .envScriptsactivate
+   3 envScriptsactivate
+   4 pip install django
+   5 pip freeze
+   6 python.exe -m pip install --upgrade pip
+   7 pip freeze  requirements.txt
+   8 django-admin startproject prj .
+   9 python manage.py runserver

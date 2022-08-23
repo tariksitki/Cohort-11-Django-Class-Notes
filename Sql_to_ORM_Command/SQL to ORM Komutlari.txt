@@ -1,0 +1,665 @@
+				SQL Commands to ORM Commands:
+
+https://amitness.com/2018/10/django-orm-for-sql-users/
+
+(Bu sitede nerdeyse tüm örnekler var)
+
+
+	-- import: (Öncelikle Student isimli class imiz yani modelimiz import edilir.)
+
+from fscohort.models import Student
+
+
+
+
+	-- Creating objects:
+
+s1 = Student(first_name="Henry", last_name="Forester", number=123)
+s1.save()
+
+
+
+
+	-- Create more objects:
+
+>>> s2 = Student(first_name="Edward", last_name="Benedict", number=321) 
+>>> s2.save()
+
+>>> s3= Student(first_name="Mccarthy", last_name="Silva", number=456)
+>>> s3.save()
+
+>>> s4 = Student(first_name="Mark", last_name="Madison", number=654) 
+>>> s4.save()
+
+
+
+
+	
+	-- To create and save an object in a single step, we can use the create() method.
+
+	s5 = Student.objects.create(first_name="Adam", last_name="Flyer", number=789)
+
+
+
+
+
+	-- Retrieving all objects:
+
+1: select * from Person 
+
+persons = Person.objects.all()
+
+
+
+
+2:  
+
+
+
+
+
+4:  Normalde tüm queryset imiz su sekilde:
+
+<QuerySet [<Creator: Guido Von Russom>, <Creator: James Gossling>, <Creator: ali veli>, <Creator: ahmet kaya>, <Creator: ahmet kaya>, <Creator: ali veli>]>
+
+
+
+ama distinct ile su sekilde:
+
+	Komut:
+>>> c5 = Creator.objects.values("first_name").distinct()
+
+	Output:
+
+<QuerySet [{'first_name': 'Guido'}, {'first_name': 'James'}, {'first_name': 'ali'}, {'first_name': 'ahmet'}]>
+
+
+
+	*** values icine veri yazmayinca distinct calismiyor:
+
+>>> c6 = Creator.objects.values().distinct()      
+       
+<QuerySet [{'id': 1, 'first_name': 'Guido', 'last_name': 'Von Russom'}, {'id': 2, 'first_name': 'James', 'last_name': 'Gossling'}, {'id': 3, 'first_name': 'ali', 'last_name': 'veli'}, {'id': 4, 'first_name': 'ahmet', 'last_name': 'kaya'}, {'id': 5, 'first_name': 'ahmet', 'last_name': 'kaya'}, {'id': 6, 'first_name': 'ali', 'last_name': 'veli'}]>
+
+
+
+	
+		*** Birden cok kriter:  (Teamwork sorusu)
+
+>>> c6 = Creator.objects.values("first_name", "last_name").distinct()   
+
+<QuerySet [{'first_name': 'Guido', 'last_name': 'Von Russom'}, {'first_name': 'James', 'last_name': 'Gossling'}, {'first_name': 'ali', 'last_name': 'veli'}, {'first_name': 'ahmet', 'last_name': 'kaya'}]>
+
+
+
+
+	**** if you're using PostgreSQL
+
+>>> c6 = Creator.objects.all().distinct("first_name")
+
+
+
+
+
+
+
+
+
+Soru5:
+
+Select *
+From Person 
+Limit 10;
+
+
+
+-- Limit normal  python slice methodu gibi calisir.
+
+
+
+>>> c8 = Creator.objects.all()[:3]
+
+<QuerySet [<Creator: Guido Von Russom>, <Creator: James Gossling>, <Creator: ali veli>]>
+
+(Burada ilk deger girmedigimiz icin ilk degerden baslayip 1, 2 ve 3 aldi )
+
+
+
+
+
+
+	Burada ise ilk deger giriyoruz. Istedigimiz yerde baslatip istedigimiz yerde sonlandiiryoruz.
+
+
+>>> c9 = Creator.objects.all()[3:6] 
+
+<QuerySet [<Creator: ahmet kaya>, <Creator: ahmet kaya>, <Creator: ali veli>]>
+>>> 
+
+
+
+
+Önemli Not: >>> c1 = Creator.objects.all()  yazdigimizda sadece first_name ve last_name return ediyor. ve veri tipi olarak da query set dönüyor.
+
+Ancak >>> c1 = Creator.objects.values()  yazdigimizda veri tipi queryset icinde object yada dict formatinda oluyor ve bu bilgiler icinde id de var. Yani bu tabloya ait tüm value lar return edilir.
+
+
+
+
+
+
+	Greater Than:  gt__
+
+>>> c2 = Creator.objects.values().filter(id__gt = 4)
+
+<QuerySet [{'id': 5, 'first_name': 'ahmet', 'last_name': 'kaya'}, {'id': 6, 'first_name': 'ali', 'last_name': 'veli'}]>
+
+
+
+
+	-- Burada all kullansaydik, yine calisirdi ama output daki veriler de id yi göstermezdi. Su sekilde:
+
+
+>>> c2 = Creator.objects.all().filter(id__gt = 4)    
+
+<QuerySet [<Creator: ahmet kaya>, <Creator: ali veli>]>
+
+
+
+
+
+
+
+	Greater than or equal:  gte__
+
+>>> c2 = Creator.objects.values().filter(id__gte = 4) 
+                                             
+<QuerySet [{'id': 4, 'first_name': 'ahmet', 'last_name': 'kaya'}, {'id': 5, 'first_name': 'ahmet', 'last_name': 'kaya'}, {'id': 6, 'first_name': 'ali', 'last_name': 'veli'}]>
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+Soru 6 :
+
+Select * 
+From Person
+Offset 5
+Limit5
+
+
+
+	Between:
+
+Sql deki between in karsiligi orm de range dir.
+
+Select *
+From Person
+Where age Between 10 and 20;
+
+
+
+Not: 
+
+Limit;  kac adet veri döndürülecegini belirler.
+
+Offset:  Output un kactan baslayacagini belirler.
+
+
+SELECT sütun FROM tablo LIMIT 10 OFFSET 20 
+
+(Burada sonuc 20 ila 30 arasinda olur.)
+
+Yani syntax su sekilde:
+
+MyModel.objects.all()[OFFSET : OFFSET+LIMIT]
+	
+Bu komut, bize sadece array icindeki elemanlar arasindan slice yapma imkani tanir. 
+Ama özellikle bazi record larda filtreleme yapmak istersek, asagida range kullanacagiz.
+
+Örnek: 
+
+>>> c2 = Creator.objects.values()[0:2] 
+
+<QuerySet [{'id': 1, 'first_name': 'Guido', 'last_name': 'Von Russom'}, {'id': 2, 'first_name': 'James', 'last_name': 'Gossling'}]>
+
+
+
+
+>>> c2 = Creator.objects.values().filter(id__range=(2, 5)) 
+
+<QuerySet [{'id': 2, 'first_name': 'James', 'last_name': 'Gossling'}, {'id': 3, 'first_name': 'ali', 'last_name': 'veli'}, {'id': 4, 'first_name': 'ahmet', 'last_name': 'kaya'}, {'id': 5, 'first_name': 'ahmet', 'last_name': 'kaya'}]>
+
+
+
+
+
+
+
+
+
+
+
+
+Soru 7:
+
+Select *
+From Person
+Where id = 1;
+
+
+
+
+>>> c2 = Creator.objects.values().filter(id = 1)
+
+<QuerySet [{'id': 1, 'first_name': 'Guido', 'last_name': 'Von Russom'}]>
+
+
+
+
+
+
+
+
+Soru 8:
+
+Where age > 18;
+>>> c2 = Creator.objects.values().filter(id__gt = 1)
+
+
+Where age >= 18;
+>>> c2 = Creator.objects.values().filter(id__gt >= 1)
+
+
+Where age < 18;
+>>> c2 = Creator.objects.values().filter(id__lt = 5)
+
+
+Where age <= 18;
+>>> c2 = Creator.objects.values().filter(id__lte = 5)
+
+
+Where age != 18;
+
+
+
+		********  Not Equal:
+
+>>> from django.db.models import Q
+
+>>> c2 = Creator.objects.values().filter(~Q(id=3)) 
+
+-- Bu yöntem daha esnek bir query saglar diyor.
+
+
+
+
+
+** Ikinci yöntem:
+
+>>> c2 = Creator.objects.values().exclude(id=3)
+
+
+
+Note:  filter ile exclude tek sorguda birlestirilebilir. Mesela id 1 den büyük olsun ama 3 e esit olmasin
+
+>>> c2 = Creator.objects.values().filter(id__gt=1).exclude(id=3) 
+
+
+
+
+
+
+
+
+
+
+Soru 9:
+
+
+Select *
+From Person
+Where age Between 10 and 20
+
+>>> c2 = Creator.objects.values().filter(id__range=(2,5))
+
+
+
+
+
+
+
+Soru 10:
+
+Not: Django da;  contains var birde icontains. icontains  incasesensitive arama yapar.
+
+ayni sekilde exact var birde iexact var. 
+
+
+
+Where name like "%A%"
+
+>>> c2 = Creator.objects.values().filter(first_name__icontains="hm") (ismi ahmet olanlar cikar)
+
+
+
+
+Where name like binary "%A%"
+
+>>> c2 = Creator.objects.values().filter(first_name__contains="hm") (ismi ahmet olanlar cikar)
+
+Note: Burada binary kullanim maksadi büyük kücük harf duyarli sorgulama yapmaktir. Yani binary kullandiigmizda harfler birebir ayni olmak zorundadir.
+
+
+
+
+
+
+Where name like "A%"
+
+>>> c2 = Creator.objects.filter(first_name__istartswith="ah")
+
+yada:
+>>> c2 = Creator.objects.values().filter(first_name__istartswith="ah") 
+
+
+
+
+
+
+Where name like binary "A%"
+
+
+>>> c2 = Creator.objects.filter(first_name__startswith="ah")
+
+yada:
+>>> c2 = Creator.objects.values().filter(first_name__startswith="ah") 
+
+
+
+
+
+
+
+WHERE name like '%A';
+
+
+>>> c2 = Creator.objects.filter(first_name__iendswith="ah")
+
+yada:
+>>> c2 = Creator.objects.values().filter(first_name__iendswith="ah") 
+
+
+
+
+
+
+
+
+WHERE name like binary '%A';
+
+
+>>> c2 = Creator.objects.filter(first_name__endswith="ah")
+
+yada:
+>>> c2 = Creator.objects.values().filter(first_name__endswith="ah") 
+
+
+
+
+
+
+
+
+
+Soru 11:
+
+Where id in (1, 2);
+
+
+>>> c2 = Creator.objects.values().filter(id__in=[3,4]) 
+
+yada:
+
+>>> c2 = Creator.objects.filter(id__in=[3,4])  
+
+
+
+
+
+
+
+
+
+Soru 12:
+
+
+Where gender = "male" and age > 25;
+
+>>> c2 = Creator.objects.values().filter(id__gt=1, first_name="ahmet") 
+
+
+
+note: filter icinde ,  kullandigimizda and operatorü olur
+
+
+
+
+
+Soru 13:
+
+
+
+Önemli:  or operatörünü calistirabilmek icin Q import ediliyor.
+
+from django.db.models import Q
+
+
+>>> c2 = Creator.objects.values().filter(Q(id=1) | Q(first_name="ahmet")) 
+
+
+
+
+
+
+
+
+
+
+Soru 14:
+
+Where not gender="male";
+
+
+Note: exclude kullanirken filter kullanmiyoruz.
+
+>>> c2 = Creator.objects.values().exclude(id=1) 
+
+
+
+
+
+
+
+
+
+
+
+Soru 15:
+
+
+Where age is Null;
+
+>>> c2 = Creator.objects.values().filter(id__isnull=True)
+
+Tablomuzda null olan deger yok ise bos queryset return eder.
+
+yada:
+
+>>> c2 = Creator.objects.values().filter(id=None)
+
+
+
+
+
+
+Where age is not null;
+
+
+>>> c2 = Creator.objects.values().filter(id__isnull=False) 
+
+yada:
+
+>>> c2 = Creator.objects.values().exclude(id=None)
+
+
+
+
+
+
+
+
+Soru 16:
+
+Select *
+From Person
+order by age;
+
+>>> c2 = Creator.objects.values().order_by("id") 
+
+(dikkat id tirnak icinde yazilir)
+
+
+
+		Tersten siralama: (DESC)
+
+>>> c2 = Creator.objects.values().order_by("-id") 
+
+
+
+
+
+
+
+
+Soru 17:
+
+Insert into Person
+Values("Jack", "23", "male")
+
+
+
+>>> Creator.objects.create(id=10, first_name="thomas", last_name="müller")
+
+Note:  eger create ederken id yazmaz isek bu durumda kendisi en son id den sonra numara sirasina göre atama yapar.
+
+Eger var olan bir id yazarsak da  UNIQUE constraint failed:   hatasi aliriz.
+
+
+
+
+
+
+
+
+
+
+
+
+Soru 18:
+
+Update Person
+Set age = 20
+where id = 1;
+
+
+
+>>> person = Creator.objects.get(id=1)
+>>> person.first_name="henry"
+>>> person.save()
+
+
+Önemli: Eger burada personu tanimlama esnasinda filter kullanirsak, save esnasinda person[0].save() dememiz gerekir.
+
+
+
+
+
+
+
+
+
+
+Soru 19:
+
+
+Update Person
+Set age = age * 1.5;
+
+
+Burada ikinci method kullaniyoruz.
+
+
+from django.db.models import F
+
+
+Person.objects.update(age=F('age')*1.5)
+
+Bu komut calistirildiginda tüm personellerin yaslarini 1.5 ile carpar ve yeni deger olarak yazar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
