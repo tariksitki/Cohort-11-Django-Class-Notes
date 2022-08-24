@@ -1,0 +1,21 @@
+
+
+{% extends "firstapp/base.html" %} 
+
+{% block container %}
+
+<!-- <form action="">
+  <label for="">student name</label>
+  <input type="text" name="name" />
+  <input type="submit" value="OK" />
+</form> -->
+
+
+<form action="">
+  {% csrf_token %}  
+  <!-- csrf token hacker lara karsi koruma saglar ve django da form kullanacaksak yazmak zorundayiz -->
+  {{ form.as_p }}
+  <input type="submit" value="Submit" enctype="multipart/form-data" >
+</form>
+
+{% endblock container %}

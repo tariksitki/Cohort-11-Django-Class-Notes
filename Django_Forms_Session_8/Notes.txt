@@ -1,0 +1,68 @@
+Install daisyUI as a Tailwind CSS plugin — Tailwind CSS Components
+
+python -m venv env && cd env && cd Scripts && . activate && cd .. && cd .. && pip install -r requirements.txt && django-admin startproject main . && django-admin startapp base && python manage.py runserver
+
+Code First Nedir?
+Veritabanı ile Programlama dili arasında bağ kuran bir tekniktir. Projenizde veritabanı işlemlerinizi mümkün mertebe Visual Studio tarafında kod yazarak gerçekleştirmenizi sağlayan bir yaklaşımdır. Bu yaklaşım sayesinde veritabanı arayüzü ile yazılımcı arasında ilişki minimize edilmektedir.
+
+Code-First: Önce Kod. Sen kodunu yaz, db’yi düşünme.
+DB-First: Önce database. Önce databasei oluştur sonra kodunu yaz
+
+migrate komutlari 12 tanedir. ve env klasörü icinden gelir.
+inceleyelim config kisminda 
+
+arkadaşlar python interpreter için ctrl + shift + P
+sonra yolu bul
+env dosyasına sağ tık copy path
+paste enter
+
+https://djecrety.ir/
+
+key generator
+
+django form işlemlerinde token kontrolü yapar ve tokeni SECRET_KEY ile şifreler. SECRET_KEY bilen biri, form verilerini haricen (proje domini dışından) gönderebilir. bu nedenle bunun görülmemesi için, bu (ve bunun gibi bilgiler) .env için saklanır.
+
+
+bütün backend lerde media dosyalari baska bir yerde saklanir cok yer kapladigi icin 
+
+aws simple storage: mesela facebook un fotolari burada saklanir. 
+
+media lari base_dir icinde toplamak zorunda degiliz server imizda herhangi bir yerde olabilir. 
+
+template leri iki türlü acma sekli 
+
+1: app ler altinda 
+2: ana dizinde 
+
+
+form olusturma iki yöntem 
+manuel 
+model form dan inherit 
+
+hoca model  database e en fazla 30 karakter depolayabilir dedi 
+
+
+media gönderimi yapacaksak 
+enctype="multipart/form-data"
+html yazmak zorundayiz
+
+
+django form larin en büyük avantaji   validation islemlerini otomatik yapar. 
+
+is valid degilse db ye kayit islemi yapmaz 
+
+biz database e veri gönderme islemini form lar araciligi ile yapiyoruz.
+user dan veri alma islemini form ile yapiyoruz. 
+
+
+default middleware ler security ve validation icin kullanilir 
+advance kullanimlarda kendimiz de ilave edebiliriz. 
+
+diger frameworklerde kendimiz yazariz. 
+
+
+base url den sonra gelen hersey endpoint 
+
+
+user a veri dönüsünü istersek html olarak istersek de json formatinda yapabiliriz. 
+

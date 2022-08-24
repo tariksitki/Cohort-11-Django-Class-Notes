@@ -1,5 +1,6 @@
 
-<center><img src="cohort_007.jpg"  alt="Clarusway" width="600"/></center>
+<center>
+<img src="cohort_007.jpg"  alt="Clarusway" width="600"/></center>
 <br>
 
 <center><h1> Django Class Notes</h1></center>
