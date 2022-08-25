@@ -8,3 +8,10 @@ update ve delete daha tehlikeli olanlar
 
 log file larda yapilan her islemin history si tutulur 
 
+superuser olustururken bize sordugu benzer password sorusu suradan gelir 
+settings.py   AUTH_PASSWORD_VALIDATORS
+
+eger biz primary key olusturmazsak django kendisi otomatik id atar her bir tablo icin 
+
+class meta icinde verbose_name = "Ögrenci"  dersek kendisi admin panel de tablo sonuna -s ekler. ama biz verbose_name_plural="Ögrenciler" dersek s eklemez 
+

@@ -1,0 +1,18 @@
+
+{% extends "fscohort/base.html" %}
+
+{% block container %}
+
+<ul>
+    {% for student in students %}
+    <a href="{% url 'student_detail' student.id  %}">
+        <li> {{ student.number}} - {{ student.first_name }} - {{ student.last_name }} </li>
+    </a>
+    
+        <!-- Önemli: Her bir degisken icin  ac kapa yapilir. tüm degiskenler bir icine atilamaz -->
+        <!-- Önemli:  Bu sekilde yaptigimiz comment icinde iki tane ic ice süslü parantez ac kapa yaparsak ici de bos olursa hata aliriz.  -->
+    {% endfor %}
+</ul>
+
+
+{% endblock container %}

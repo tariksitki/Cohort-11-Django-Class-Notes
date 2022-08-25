@@ -1,0 +1,12 @@
+
+{% extends 'fscohort/base.html' %}
+
+{% block container %}
+    <h2>Add Student</h2>
+    <form action="" method="POST">
+        {% csrf_token %}    
+        <!-- oturum icin unique bir key üretir baskalarinin bizim adimiza islem yapmasinin önüne gecmek icin                 -->
+        {{form.as_p}}						   
+        <input type="submit" value="add">
+    </form>
+{% endblock container %}

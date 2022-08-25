@@ -1,0 +1,19 @@
+
+{% extends 'fscohort/base.html' %}
+
+
+{% block container %}
+    <form action="" method="POST">
+        <p>Are You Sure "{{ student }}" to delete !!! </p>
+        {% csrf_token %}
+        <input type="submit" value="Yes">
+    </form>
+    <!-- yes tusu ile islem yapmak icin view da func yazdik o nedenle form icinde -->
+    <!-- no ise sadece yönlendirme yapiyor  -->
+
+    <a href="{% url 'student_list' %}">
+        <button>No</button>
+    </a>
+    <!-- Bir butona tiklayip url verme islemi bu sekilde -->
+
+{% endblock container %}
