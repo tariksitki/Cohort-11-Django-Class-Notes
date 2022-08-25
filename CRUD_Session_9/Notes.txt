@@ -1,0 +1,10 @@
+
+en tehlikesiz olan read 
+en fazla kvkk ya aykiri durum gelisebilir
+
+daha sonra create 
+
+update ve delete daha tehlikeli olanlar 
+
+log file larda yapilan her islemin history si tutulur 
+
