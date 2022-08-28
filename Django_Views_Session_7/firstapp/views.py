@@ -32,6 +32,8 @@ from django.http import HttpResponse
 
 def home_view(request):
     ## db de bir tablo oluturup  ürünler = products.objects.all() deyip bunu context icine verebiliriz ve template de kullanabiliirz.
+    print(request.path)
+
     context = {
         'title': 'clarusway',
         'dict1': {'django': 'best framework'},

@@ -1,9 +1,51 @@
    1 python -m venv env
-   2 .envScriptsactivate
-   3 envScriptsactivate
+   2 .env/Scripts/activate
    4 pip install django
    5 pip freeze
    6 python.exe -m pip install --upgrade pip
-   7 pip freeze  requirements.txt
-   8 django-admin startproject prj .
+   7 pip freeze >  requirements.txt
+   8 django-admin startproject projename .  (nokta koyalim)
    9 python manage.py runserver
+  10  python manage.py startapp  appname
+
+
+
+	## decouple : 
+
+pip install python-decouple
+settings.py da secret_key yazan kisim komple kopyalanip  .env dosyasi icine yapistirilir ve tirnaklar kaldirilir bosluklar silinir. 
+settings.py da from decouple import config
+sonra SECRET_KEY = config("SECRET_KEY")
+
+
+
+	## .gitignore: 
+browser da django gitignore yazilir. toptal sitesindeki kodlar kopyalanip ana dizinde olusturulan .gitignore dosyasi icine konulur. 
+
+
+## gitignore dosyasini virtuell env imizi  github a gönderip orada büyük yük olusturmamak icin kullaniriz. 
+
+## .env dosyasini ise gizli sifre ve kodlarimizi github a göndermemek icin baskalari görmesin diye kullaniriz.
+
+
+	#  superuser
+python manage.py createsuperuser
+
+
+	#  migrate:
+python manage.py makemigrations (djangoyu uyariyoruz hazirliklarini yap diye)
+python manage.py migrate  (islemlerin db e ulastirilmasi islemi)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
