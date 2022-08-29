@@ -2,3 +2,14 @@ selman hoca nin github i cok güzel dedi
 
 bu projenin read me si template olarak kullanilabilir 
 
+bir project olusturmadan  manage.py komutlari calismaz. o nedenle ilk proje olustururken django-admin komutu kullanilir 
+
+
+dersin sonunda tek sayfada delete ve update func lari olacak sekilde css güzellestir. 
+
+db deki islemlerde sadece read de get method kullanilir 
+diger tüm islemlerde post kullanilir. 
+
+from django.contrib import messages
+messages.success(request,"Todo created successfully")
+messages.warning(request, "Todo deleted!")

@@ -1,0 +1,28 @@
+
+.navbar {
+    background-color: brown;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+
+#warning {
+    background-color: lightcoral;
+    color: aliceblue;
+    margin: auto;
+    width: 40%;
+    height: 30%;
+    text-align: center;
+}
+
+#success {
+    background-color: darkseagreen;
+    color: rgb(231, 200, 158);
+    margin: auto;
+    width: 40%;
+    height: 30%;
+    text-align: center;
+}
