@@ -1,0 +1,10 @@
+yanlislikla silinen dosya github in takip edildigi kisimdan geri al tusu ile ger alinabilir.
+
+
+yanlislikla yüklenen bir paketi silmek icin:
+
+pip uninstall decouple
+
+
+tikladigimiz yere link verme olyaina bak
+
