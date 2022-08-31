@@ -1,0 +1,175 @@
+   1 python -m venv env
+   2 .env/Scripts/activate
+   4 pip install django
+   5 pip freeze
+   6 python.exe -m pip install --upgrade pip
+   7 pip freeze >  requirements.txt
+   8 django-admin startproject projename .  (nokta koyalim)
+   9 python manage.py runserver
+  10  python manage.py startapp  appname
+
+
+
+	## decouple :   .env
+
+pip install python-decouple
+settings.py da secret_key yazan kisim komple kopyalanip  .env dosyasi icine yapistirilir ve tirnaklar kaldirilir bosluklar silinir. 
+settings.py da from decouple import config
+sonra SECRET_KEY = config("SECRET_KEY")
+
+
+
+	## .gitignore: 
+browser da django gitignore yazilir. toptal sitesindeki kodlar kopyalanip ana dizinde olusturulan .gitignore dosyasi icine konulur. 
+
+
+## gitignore dosyasini virtuell env imizi  github a gönderip orada büyük yük olusturmamak icin kullaniriz. 
+
+## .env dosyasini ise gizli sifre ve kodlarimizi github a göndermemek icin baskalari görmesin diye kullaniriz.
+
+
+	#  superuser
+python manage.py createsuperuser
+
+
+	#  migrate:
+python manage.py makemigrations (djangoyu uyariyoruz hazirliklarini yap diye)
+python manage.py migrate  (islemlerin db e ulastirilmasi islemi)
+
+
+
+	## Bootstrap:
+
+Kullanim icin yine iki secenek var. 
+Birincisi  CDN ile kullanimdir. Bunun icin bootstrap in ana sayfasinda bulunan css kodu alinir ve base.html in   head kismi icine yapistirilir.
+Js kodu ise body nin bitis kismina yapistirilir.
+
+
+
+
+	#### Static:
+
+Static dosya kullanimi icin;
+settings.py da kodlar default olarak yazili gelir. Bunun üzerine biz,  ana projenin urls.py da bulunan urlpatterns kismina +   isareti koyarak static ile ayari ekleriz.
+Ihtiyac olan app  imizin icinde static klasörü olustururuz. bunun altinda da karisiklik olmamasi icin yine app ile ayni isimde klaösr olustururuz.  
+Ve bu klasör altina da js css images gibi klasörler olusturarak gerekli dosyalari yükleriz.
+## Önemli:  Eger user in resim girmesi gerekli yerlerde user resim girmediginde göstermek icin kullanilan static avatar fotosu gibi fotolari user a static klasör icinden vermek istersek bu durumda,  image in adresinde bunu belirtirken absolute path seklinde belirtmek zorundayiz. yani path in basina /  koyarak  
+/static/appname/images/foto.png/  seklinde absolute path koyariz.
+
+basinda /   olmadiginda buna relative path denir. 
+
+
+
+
+
+	#####  media:
+
+User dan alinan fotolari yüklemek icin models.py   da upload_to secenegi kullanilir. 
+Django;  user dan bir resim geldiginde otomatik olarak  ana dizinde media isimli klasör olusturur ve bunun altina da bizim upload_to nun karsisina yazdigimiz isimde bir klasör olusturarak bu klasör icine user dan gelen resimleri atar. 
+
+media dosyalarini kullanabilmek icin settings.py da su kodlar yazilir:
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media/'
+
+
+sonrasinda  ana projenin urls.py inda + isareti ile su kod eklenir:
+
+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+	### auto_now_add=True
+
+Models de datetimefield hem tarih hem de saat verir. Datetime ise sadece tarih verir. 
+
+cretaed_date de genellikle  auto_now_add=True  kullanilir. cünkü bu sadece cretae edildiginde bir kereligine tarih verir. 
+
+update edildiginde ise auto_now = True   kullanilir. Bu da her update edildiginde tarih verir. 
+
+
+
+
+	### Model, model de kullanilan attribute lar, verbose_name  gibi ekstra özellikler ile ilgili önemli bilgilerin oldugu cok güzel bir site:
+
+https://ofizu.com/django/django-model-islemleri/
+
+
+
+	##  ordering de yazdigimiz isim ya tupla yada liste icinde olmali
+
+
+	### emoji:  vscode da emoji icin extension lar var
+
+	
+
+	## db_column="aciklama"
+models.py da model olustururken,  parantez icerisinde yazacagimiz bu kod, bizim sütunumuzun db de nasil göründügünü belirler. 
+
+
+
+
+
+	####    db_index = True:
+
+You should use db_index=True when you use unique=True, there is a specific reason to use it,
+By using this method you can boost a little bit of performance,
+When we fire a query in SQL, finding starts from the top to bottom
+Case: 'Without db_index=True': It will search and filter till all bottom rows even if we find the data
+Case: 'With db_index=True': When Object finds, it will just stop their
+
+It will boost a little bit of performance
+
+Bunu kullandigimizda, tablomuzun bu sütunu index haline getirilir.
+
+
+
+	##  views  da kullanilan context dict formatinda olmali
+
+
+
+	###    {%  %}
+
+    django da for loop  tag dir ve {%  %} icinde olur. 
+        variable lar ise {{ }}  icinde olur 
+
+
+
+	### {% csrf_token %}
+
+bu kod  {{ form }} un altinda yada üstünde olabilir. ikisi de calisir.
+
+
+
+
+
+	### git bash:
+bash kullaniyorsak source env/Scripts/activate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
