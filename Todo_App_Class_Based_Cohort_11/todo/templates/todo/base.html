@@ -35,13 +35,19 @@
         </div>
     </nav>
 
+    
+
+    {% comment %}
+        messages ile ilgili for döngüsünü base.html koyuyoruz. Böylece hangi view den message gönderimi yapilirsa yapilsin buradaki message calisir. aksi takdirde her bir template sayfasinda ayri ayri yazmak zorunda kalacaktik.     
+    {% endcomment %}
+        
 
     {% if messages %} 
         {% for message in messages %} 
             {% if message.tags == "warning" %}
-                <div id="warning" class="message">{{ message }}</div>
+                <div id="warning" class="message alert alert-warning">{{ message }}</div>
             {% else %}
-                <div id="success" class="message">{{ message }}</div>
+                <div id="success" class="message alert alert-success">{{ message }}</div>
             {% endif %} 
         {% endfor %} 
     {% endif %}

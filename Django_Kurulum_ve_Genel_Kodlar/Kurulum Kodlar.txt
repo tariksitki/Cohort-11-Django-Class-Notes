@@ -151,6 +151,22 @@ bash kullaniyorsak source env/Scripts/activate
 
 
 
+	#### class based views larda message kullanimi:
+
+## Önemli:  class based views lerde message kullanma adimlari:
+        ### views.py
+## 1: from django.contrib import messages
+## 2: from django.contrib.messages.views import SuccessMessageMixin.
+##   class ismi yanina acilan ve nereden inherit edileceginin yazildigi parantez icine ilk props olarak SuccessMessageMixin  yazilir. 
+## 3: yazdigimiz class icinde ve en üste """ """ icinde mesaj yada
+## 4: yazdigimiz class icine property olarak  success_message = "%(book)s was updated successfully"
+## 5: son olarak da bu class based view in bize return edecegi template e yada base.html e messages ile ilgili olan for döngüsü yazilir
+
+
+
+
+
+
 
 
 
