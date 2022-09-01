@@ -167,7 +167,7 @@ bash kullaniyorsak source env/Scripts/activate
 
 
 
-
+	### class based view larda context gönderimi;  anthony hoca ile yaptigimiz class based todo projesinde var.
 
 
 

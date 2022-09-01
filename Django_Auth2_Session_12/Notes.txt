@@ -1,0 +1,25 @@
+
+bu projeye sifirdan basladik starter yoktu. 
+
+terminal de yükleme yaparken birden cok seyi aralarda bosluk birakarak tek seferde yüklenebilir
+
+crispy forms da installed app  e eklenir 
+
+bootstrap4 kullandik bu projede 5 e cevirebilirsin
+
+
+django nun kendine ait user modeli var.
+eger u yeterli degil ise karsimiza 4 secenek 
+
+md file da var. 
+
+
+db de sifre tutulmaz hashlenmis hali tutulur. 
+abc de bir hash leme yapar. 
+abcd deyince tamaen farkli bir hash 
+yani baglanti kurulamaz.
+bizim hashlenmis sifre elde eden biri orijinal sifreyi elde edemez. 
+orijinal ile hash elde edilebilir ama 
+hash ile orijinal elde edilemez. 
+
+

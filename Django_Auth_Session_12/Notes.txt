@@ -1,0 +1,50 @@
+
+auth  ve permission 
+
+permission yetkidir. sadece authenticate olammiz yeterli degil.  login olmus olabiliriz ama admin yetkisi olmayabiliriz. 
+
+user otomatik gelir context icine koymaya gerek yok 
+
+modelimiz yokken migrate ettigimizde db de otomatik olarak session diye bir tablo olusturur
+
+md calis 
+
+best practice user lari gruba dahil edip gruplarin yetkisini düzenleme 
+
+birden cok yetki verme secilebilir ayni anda 
+
+her user icin ayri permission yazmak ileride islerimizi zora sokabilir. 
+
+
+>>> user1.first_name = "Ali Ali"   
+>>> user1.save() 
+
+
+django da username unique dir. Bu nedenle birden fazla user a ayni ismi veremeyiz. 
+
+bir browser da login oldugumuzda django session da bizi authanticate diye gösterir. bu nedenle buradak itemplate de login oldugumuzda bizim ismimiz cikar. 
+
+logout olmak icin admin panel de sag üstte tus var. 
+
+
+login icin django bize hazir form sunar biz bunu sadece render ederiz. 
+
+
+buradaki app imiz bir auth app idir. 
+
+
+baska bir projede bu app imizi direkt yapistirip sadece projenin ana urls.py ina ekledigimiz account uzantisini ekleyerek kullanabiliriz. 
+
+
+django burada sadece read icin get diger hepsi icin post kullanir. 
+ama rest framework da bu isimler put gibi degisecek 
+
+is_valid;  degerlerin forma göre gecerli olup olmadigini konrol eder. 
+valid den gecmezse error a düser ve error mesaji veririz
+
+
+staff yetkisi olmayan ve admin olmayan user lar normal django nun bos sayfasina da giremez 
+sadece staff olanlar admin page e girebilir ama degisiklik yapamaz
+
+templates altinda direkt registration klasörü olustur diyor docs 
+

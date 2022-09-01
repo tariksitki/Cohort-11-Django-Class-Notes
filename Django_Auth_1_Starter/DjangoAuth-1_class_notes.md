@@ -232,15 +232,14 @@ Below you can see the class diagrams for User as well as Permission and Group.
 ![](DjangoAuthModels.png)
 
 
-# Add users programmatically (shellden user ekleme islemi)
-eger ileride bizden binlerce kisiden olusan bir sirketin user larini create etme görevi verilirse bir for loop olustururuz ve hepsini ayni anda olusturur
+# Add users programmatically
 
 https://docs.djangoproject.com/en/3.2/topics/auth/default/
 
 The most direct way to create users is to use the included create_user() helper function:
 ```py
 python manage.py shell
-ilk olarak sunu yazalim
+
 from django.contrib.auth.models import User
 
 # Create user and save to the database
@@ -253,7 +252,6 @@ user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypasswo
 # The extra_fields keyword arguments are passed through to the User’s __init__ method to allow setting arbitrary fields on a custom user model.
 # Extra fields:
 User.objects.create_user('john', email='lennon@thebeatles.com', password='johnpassword', is_staff=True)
-### user positional argument
 # Or
 user.is_staff=True 
 user.save()
@@ -274,7 +272,6 @@ from django.contrib.auth.models import User
 
 u = User.objects.get(username='john')
 u.set_password('new password')
-## db ye hashlenmis bir sekilde kayit saglar. bunu da superuser bile göremez. db ye hicbir sifre hashlenmeden kaydedilmez. django bunu otomatik yapar sha 256 ya göre. bu da cok güclü algoritma
 u.save()
 ```
 
@@ -286,11 +283,6 @@ Changing a user’s password will log out all their sessions.
 
 
 # Add users with auth
-
-https://docs.djangoproject.com/en/4.1/topics/auth/default/
-bu linkte yaklasik ortalarda authentication views diye kisim var. 
-burada django nun bize sagladigi hazir template ler var.
-login sayfasi logout sayfasi gibi sayfalar  
 
 We want to allow adding regular users to our app.
 
@@ -423,10 +415,7 @@ Navigate back to the login page (http://127.0.0.1:8000/accounts/login/) once you
 - Open the project settings.py and add the text below to the bottom. Now when you log in you should be redirected to the site homepage by default.
 ```py
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-## django default olarak profile a redirect eder
 LOGIN_REDIRECT_URL = "/"
-## setttings.py da en alta yapistir. nereye gitmesini istiyorsak, mesela home.
-## static olarak el ile adres yolu yazmak bizim icin sikinti. o nedenle burada name ini yazdik dynamic olur. 
 ```
 - From now on, when someone login the page, the page will be redirected to home page.
 
@@ -436,9 +425,6 @@ LOGIN_REDIRECT_URL = "/"
 - Go to views.py, create new view:
 
 ```py
-
-## django sadece register sayfasi sunmaz kendimiz yapariz.
-# # bunun icin de django dan hazir form import edilir 
 # First import UserCreationForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -508,26 +494,16 @@ def register(request):
         if form.is_valid():
             form.save()
             # that creates a new user
-            # after creation of the user, want to authenticate it yani hem de login
-            # yapmak zorunda degiliz user register olduktan sonra kendi de login olabilir
-
-            ## burada username gibi isimleri, sayfada inspect deyip html deki name tag larina bakiyoruz. 
+            # after creation of the user, want to authenticate it
             username = form.cleaned_data['username']
-            username = form.cleaned_data.get('username')
-            ## cleaned_data  dict formatinda return eder. valid olmus verileri alir. 
             password = form.cleaned_data['password1']
             # inspect the page and see the first password is password1, import authenticate
             user = authenticate(username=username, password=password)
-            ## user i önce autenticate edip sonra login yapiyoruz.
-
-            ## neden cleaned_data https://backend11tr.slack.com/archives/C03AS204C4V/p1661369046480419 (edited) 
             
             # want user to login right after registered, import login
             login(request, user)
             # want to redirect to home page, import redirect
             return redirect('home')
-
-            ##  eger user i register olduktan sonra login yapmak istemezsek, bu durumda register olan user i login sayfasina yönlendirebiliirz. return redirect('login') buradaki login ismi documentations daki hazir login sayfasinin isminden gelir. 
             
     else:
         form = UserCreationForm()
@@ -538,7 +514,6 @@ def register(request):
     
     return render(request, "registration/register.html", context)
 ```
-register html de button ve csrf token gerekir
 
 - Lets try to create a new user again
 - It must redirect to homepage
@@ -563,8 +538,6 @@ The default password reset system uses email to send the user a reset link. You 
 
 - Add view
 ```py
-
-    ## bize otomatik change formu gelir ama sen bunu da dene bakalim ekstra view
 def password_change(request):
     if request.method == 'POST':
         # We will use user change form this time
@@ -581,12 +554,11 @@ def password_change(request):
     }
     
     return render(request, "registration/password_change.html", context)
-    ## docs da hepsi yaziyor. default password_change_form.html
 ```
 
 - Add registration/password_change.html
 ```html
-<h1>Password Change</h1>
+<h1>Password cchange</h1>
 
 <form method="post">
 
@@ -611,24 +583,8 @@ urlpatterns = [
     path('', home_view, name="home"),
     path('register', register, name='register'),
     path('password_change/', auth_views.PasswordChangeView.as_view(template_name="registration/password_change.html"), name="password_change")
-
-    ## django nun kendi view ini kullandik sadece template name inde degisiklik yaparak kendi template imizi kullandik 
-    ## bu islemi yapinca url de accounts yazmamiza gerek kalmiyor
-    ## djangonun verdigi template i de kullanip deneyelim 
-    ## password change isleminde login degilsek önce login ol der
 ]
 ```
-    ## docs da yazili olan islemlere ait template isimleri ile ayni ada sahip template olusturursak bizimkini return eder. ama bu islemde önce kendi default unu okur. bizim kini okumaz. bu nedenle installed_apps da settings.py da en üste bizim kendi app imizi yazariz. 
-    ## genelde template in overwrite i view de yapilir. burada yaptigimiz ise ince bir is 
-
-    ### django bize registration altinda sunu sunu olustur der diyor. bu ypilarin aynisi env dosyasi icinde contrib de var. inceleyelim 
-
-
-
-
-    ### password reset bilgiler docs dan bakalim 
-    ## accounts/  da password reset in kendi template ine bakalim 
-
 
 ### Adjust a mail backend for development (Console backend):
 
@@ -638,29 +594,7 @@ To specify this backend, put the following in your settings:
 
 ```py
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-bu ayari settings.py a yapistir. diger bir husus mail gönderecek ve kayitli kisinin mail adresi olmasi lazim. 
 ```
-
-<p>We've emailed you instructions for setting your password, if an account exists with the email you entered. You
-should receive them shortly.</p>
-
-<p>If you don't receive an email, please make sure you've entered the address you registered with, and check your
-spam folder.</p>
-
-docs da console backend bak. gercek mail yerine console da dummy mail gönderir. bize console da bir yazi döner. buradaki yaziyi da overwrite edebilirz. mail de hata oldugunda birsey dönmez. bunun icin formu overwrite etmemiz lazim. yazi icinde link var tiklayinca degisiklik sayfasi cikar. 
-
-password_reset_done.html  adinda kendi html imizi olusturduk. 
-password_reset_confirm.html  adinda kendi html imizi olusturduk. 
-
-password_reset_complete.html  adinda kendi html imizi olusturduk.
-bu sayfaya a tagi ile login tusu koyuyoruz. user tekrar login olabiliyor. 
-
-
-docs da tüm islemler sira ile var
-
-
-
 
 ### Logout
 
@@ -680,33 +614,3 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 https://django-allauth.readthedocs.io/en/latest/overview.html
 
 https://docs.djangoproject.com/en/3.2/topics/auth/customizing/
-
-
-
-## 
-eger login icin hazir olan template i de overwrite etmek istersek,
-settings.py da LOGIN_URL = "tariks_login"  seklinde yazacagiz. 
-normal de name olarak login gömülü gelir.
-
-
-
-
-####  decorator:
-
-bir sayfa istiyoruz, o sayfaya login olmayan giremesin. 
-views.py da 
-from django.contrib.auth.decorators import login_required
-
-ve special view i üstüne:
-
-@login_required yazilir
-
-bunu yaptigimizda; special sayfasina girmek istedigimizde önce logine yönlendirir. url de next special yazar. bu demek olur ki; login isi bittiginde special a git. 
-
-decorator larin amaci  dry
-
-yani devamli kullanilacak seyler varsa hazir decorator yazmak 
-
-decoratorlar,  onun altina yazdigimiz func i alir, ve decorator icinde calistirir 
-
-
