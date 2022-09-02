@@ -1,0 +1,61 @@
+
+auth  ve permission 
+
+permission yetkidir. sadece authenticate olammiz yeterli degil.  login olmus olabiliriz ama admin yetkisi olmayabiliriz. 
+
+template imizde user ismini kullanmak istedigimizde user otomatik gelir. yani context icine koyarak view den göndermeye ihtiyac kalmadan, direkt template de user diye kullanabiliriz.  
+
+modelimiz yokken migrate ettigimizde db de otomatik olarak session diye bir tablo olusturur
+
+dosyalar kismindaki db.sqlite dosyasi, migrate komutu calistirildiktan sonra olusur. ondan öncesinde yoktur. 
+
+md dosyasina calisalim.  
+
+best practice user lari gruba dahil edip gruplarin yetkisini düzenleme.  
+her user icin ayri permission yazmak ileride islerimizi zora sokabilir.  
+
+admin panel de bir user icin birden cok yetki verme secilebilir ayni anda ctrl tusu ile. 
+
+
+>>> user1.first_name = "Ali Ali"   
+>>> user1.save() 
+
+
+django da username unique dir. Bu nedenle birden fazla user a ayni ismi veremeyiz. 
+
+biz bir browser da login oldugumuzda django; session tablosunda bizi authanticate diye gösterir. Bizim icin bir session key, bir tane session data ve expire date atamasi yapar. bu nedenle admin panel template in de login oldugumuzda bizim ismimiz cikar. Hello Tarik der.  
+
+
+bir diger default table ise auth user dir. Biz admin panel de yada baska sekilde login oldugumuzda yine bu tabloya bizim bilgilerimiz aktarilir. 
+
+
+db.sqlite dosyasinda default olarak 11 tane table gelir. 
+
+logout olmak icin admin panel de sag üstte tus var. 
+
+
+login icin django bize hazir form sunar biz bunu sadece render ederiz. 
+
+
+buradaki app imiz bir auth app idir. 
+baska bir projede bu app imizi direkt yapistirip sadece projenin ana urls.py ina ekledigimiz account uzantisini ekleyerek kullanabiliriz. 
+
+
+django method olarak sadece read icin get diger hepsi icin post kullanir. 
+ama rest framework da bu isimler degisecek. mesela put patch gibi 
+
+is_valid;  degerlerin forma göre gecerli olup olmadigini konrol eder. yani mesela form da email alani varsa, bu alana girilen verinin formati email icin uygunsa o zaman is_valid  dir. 
+valid den gecmezse error a düser ve error mesaji veririz
+
+
+staff yetkisi olmayan ve admin olmayan user lar normal django nun bos sayfasina bile giremez.
+sadece staff olanlar admin page e girebilir ama degisiklik yapamaz. Bunlardan da superuser tarafindan yetki verilenler sadece verilen yetki kadariyla hareket edebilir. 
+
+templates altinda direkt registration klasörü olustur diyor docs 
+
+
+biz superuser bile olsak diger kullanicilarin password unu göremeyiz.
+
+db de hash lenmemis password tutulmaz. 
+
+
