@@ -11,14 +11,14 @@ Authentications
 
 ### Summary
 - Create project
-- Secure your project
+- Secure your project (interview da cikabilir. Django da proje nasil secure hale getirilir diye)
   - .gitignore
   - django-decouple
 - Create app
 - Login Admin Site
   - Migrate
   - Create superuser
-- Add users programmatically
+- Add users programmatically (terminal den user ekleme islemi. yani admin panelden tek tek manuel degil.)
 - Adding users with auth
   - Modify project url pattern
   - Create url on app
@@ -46,7 +46,27 @@ The primary attributes of the default user are:
 - first_name
 - last_name
 
+
+###### Deutsch:
+
+Es gibt das Authentifizierungssystem von Django in seiner Standardkonfiguration.
+
+Diese Konfiguration wurde entwickelt, um die häufigsten Projektanforderungen zu erfüllen, eine relativ breite Palette von Aufgaben zu bewältigen und Passwörter und Berechtigungen sorgfältig zu implementieren.
+
+Für Projekte, bei denen die Authentifizierungsanforderungen vom Standard abweichen, unterstützt Django eine umfassende Erweiterung und Anpassung der Authentifizierung.
+
+user Objekte sind der Kern des Authentifizierungssystems. Sie stellen normalerweise die Personen dar, die mit Ihrer Website interagieren, und werden verwendet, um Dinge wie die Zugriffsbeschränkung, die Registrierung von Benutzerprofilen, die Verknüpfung von Inhalten mit Erstellern usw. zu ermöglichen.
+
+Die primären Attribute des Standardbenutzers sind:
+- username
+- password
+- email
+- first_name
+- last_name
+
 The authentication that comes with Django is good enough for most common cases, but you may have needs not met by the out-of-the-box defaults.
+
+Die mit Django gelieferte Authentifizierung ist für die meisten gängigen Fälle gut genug, aber möglicherweise haben Sie Anforderungen, die von den standardmäßigen Standardeinstellungen nicht erfüllt werden.
 
 
 ### Django Authentication System
@@ -54,6 +74,13 @@ The authentication that comes with Django is good enough for most common cases, 
 According to Django the authentication system aims to be very generic, and so does not provide some features provided in other web authentication systems. Solutions for some common problems are available as third-party packages. For example, throttling of login attempts and authentication against third parties (e.g. OAuth).
 
 The necessary configuration was all done for us when we created the app using the django-admin startproject command. The database tables for users and model permissions were created when we first called python manage.py migrate.
+
+
+# Deutsch:
+
+Laut Django zielt (hedefler) das Authentifizierungssystem darauf ab, sehr generisch zu sein und bietet daher einige Funktionen nicht, die in anderen Webauthentifizierungssystemen bereitgestellt werden. Lösungen für einige allgemeine Probleme sind als Pakete von Drittanbietern (Third party packages) verfügbar. Zum Beispiel Drosselung von Anmeldeversuchen und Authentifizierung gegenüber Dritten (z. B. OAuth).
+
+Die erforderliche Konfiguration wurde für uns erledigt, als wir die App mit dem Befehl django-admin startproject erstellt haben. Die Datenbanktabellen für User und model permissions wurden erstellt, als wir zum ersten Mal python manage.py migrate aufgerufen haben.
 
 ```py
 INSTALLED_APPS = [
@@ -64,9 +91,11 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     ...
-    'django.contrib.sessions.middleware.SessionMiddleware',  # Manages sessions across requests
+    'django.contrib.sessions.middleware.SessionMiddleware',  
+    # Manages sessions across requests
     ...
-    'django.contrib.auth.middleware.AuthenticationMiddleware',  #  Associates users with requests using sessions.
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  
+    #  Associates users with requests using sessions.
     ....
 ```
 
@@ -140,11 +169,16 @@ cd .\src\
 
 Add standard .gitignore file to the project root directory. 
 
+Fügen Sie dem Stammverzeichnis des Projekts die standardmäßige .gitignore-Datei hinzu.
+
 Do that before adding your files to staging area, else you will need extra work to unstage files to be able to ignore them.
 
 ### python-decouple
 
 - To use python decouple in this project, first install it:
+
+
+Um Python Decouple in diesem Projekt zu verwenden, installieren Sie es zuerst:
 ```py
 pip install python-decouple
 ```
@@ -154,6 +188,9 @@ pip install python-decouple
 from decouple import config
 ```
 - Create .env file on root directory. We will collect our variables in this file.
+
+
+Erstellen Sie eine .env-Datei im Stammverzeichnis. Wir werden unsere Variablen in dieser Datei sammeln.
 ```py
 SECRET_KEY = o5o9...
 ```
