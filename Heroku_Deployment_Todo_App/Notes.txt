@@ -87,3 +87,53 @@ canliya gecince static root kullanilir.
 
 whitenoise icin middleware yukarilarda olmali 
 
+heroku  white noise kullanimini önerir. alternatif amazon s3 
+
+gunicorn bir web server dir. 
+django app baska server lar ile de calisir ama heroku bunu öneriyor. 
+
+
+django-heroku  yüklü olmak zorunda calismasi icin 
+
+heroku ya gönderince otomatik  postgresql ile calisir. 
+django-heroku yükleyince postgre icin bir paket daha yükler. 
+cünkü django app imizin posgte ile konusmasi gerekir. 
+
+
+
+template lerde hata alinca prettier HTML yapilir. ve if ve for lar düzenlenir. 
+sonrasinda calisir. 
+
+
+mac ler icin  pip install psycopg2-binary
+
+
+1- todo app aktifleştirdik
+2- varsa migrate işlemlerimizi yaptık
+3- Genel dizinde Procfile dosyası oluşturduk
+4- pip install gunicorn yaptık
+5- pip freeze > requirements.txt ile req'e ekledik
+6- settings'e  STATIC_ROOT = BASE_DIR / "staticfiles"  ekledik
+7- pip install whitenoise yaptık
+8- pip freeze > requirements.txt ile req'e ekledik
+9- settings'te middleware'e 'whitenoise.middleware.WhiteNoiseMiddleware',  ekledik
+10- pip install django-heroku yaptık
+11- pip freeze > requirements.txt ile req'e ekledik
+12- settingse şu kodu eklemeyi unutmayalım STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+13- Settings'e import django_heroku ekledik
+14- Settingsin altına django_heroku.settings(locals()) ekledik 
+15- githuba commitledik
+
+
+
+
+container mimarisi 
+Docker:
+bir server icinde onlarca container olusturur. 
+hepsini birbirine baglar. 
+biri off a ciktiginda sunu calistir der. 
+bunun icin instrument tool lari var. 
+
+.env i heroku da ayarlama
+settings
+reveal config vars 
