@@ -1,0 +1,89 @@
+selman hoca nin github i cok güzel dedi 
+
+bu projenin read me si template olarak kullanilabilir 
+
+bir project olusturmadan  manage.py komutlari calismaz. o nedenle ilk proje olustururken django-admin komutu kullanilir 
+
+
+dersin sonunda tek sayfada delete ve update func lari olacak sekilde css güzellestir. 
+
+db deki islemlerde sadece read de get method kullanilir 
+diger tüm islemlerde post kullanilir. 
+
+from django.contrib import messages
+messages.success(request,"Todo created successfully")
+messages.warning(request, "Todo deleted!")
+
+
+
+
+
+
+Deployment:
+
+Projemizi canliya alma
+
+Heroku ücretli oluyor. 
+
+Bu ortamlar deployment islemini cok kolaylastiriyor. Bunlarin haricinde mesela microsoft da deploy islemleri zor. 
+
+backend projeleri netlify a da deploy edilebilir. 
+
+
+clarusway dökümanda cli üzerinden deploy ekstra gösterilmis. 
+bunu hoca yapmadi sen yap. 
+
+
+biz arayüz üzerinden yapacagiz. 
+
+notlar benim class notes icinde var. 
+
+heroku da proje yükledigimizde, ilk 1 saat icinde bu projeye istek gelmezse server uykuya dalar. daha sonra istek yaptigimizda resimlerimizi göremeyebiliriz. bunun icin resimleri baska bir yere yüklemek gerekir. static dosyalarda problem yok
+static leri amazon s3 ile yüklemek zorunda degiliz.  whitenoise a yükleriz.
+
+django server ile direkt iletisime gecemez. bu nedenle wsgi file kullaniriz. 
+internetten arastiralim. 
+
+Gunicorn linux tabanli pc ler icin genelde.
+windows icin islemler biraz zor. 
+
+
+deploy etmeden önce localde calistigina emin olalim. 
+yine deploy dan önce migrate komutlari calistiralim db son hali ile olussun. 
+
+
+
+gunicorn hangi dosyayi okuyacagini belirtir. 
+
+
+makemigrations --no-input 
+mesela superuser olustururken isim girmek icin girilen input 
+
+
+dökümani tamamen oku 
+
+whitenoise   python framework ler icin yapilmistir. 
+
+
+canliya gectigimizde bütün static dosyalari tek bir klasör icinde toplanmak zorunda 
+
+heroku nun docs un da da django deploy yaziyor. 
+
+python app lerinin hicbiri server ile direkt konusamaz. 
+Bu nedenle Procfile icinde yazdigimiz kod,  app imizin hangi wsgi server ile konusacagini belirtir. deriz ki bizim projemizin icindeki wsgi 
+gunicorn hangi wsgi file ini okuyacagini söyler. 
+
+whitenoise un kendine ait dökümani var. 
+
+no such a table hatasi,  migrate komutu calismadigi icindir. 
+
+clarusway dökümanda STATIC_ROOT = BASE_DIR / "staticfiles"  kodunun eski hali var bunu kullanalim. 
+
+bu collect static diye bir kod calistiir. hepsini bir yerde toplar. 
+
+static dirs local de kullanilir. 
+canliya gecince static root kullanilir. 
+
+
+whitenoise icin middleware yukarilarda olmali 
+
