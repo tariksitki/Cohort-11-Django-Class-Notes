@@ -30,6 +30,7 @@ browser da django gitignore yazilir. toptal sitesindeki kodlar kopyalanip ana di
 
 	#  superuser
 python manage.py createsuperuser
+python manage.py createsuperuser --username admin --email admin@mail.com (burada iki tane - var)
 
 
 	#  migrate:

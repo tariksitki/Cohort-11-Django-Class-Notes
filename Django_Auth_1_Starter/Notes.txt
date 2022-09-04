@@ -59,3 +59,5 @@ biz superuser bile olsak diger kullanicilarin password unu göremeyiz.
 db de hash lenmemis password tutulmaz. 
 
 
+python shell, django ya özel bir paket olarak düsünebiliirz.
+

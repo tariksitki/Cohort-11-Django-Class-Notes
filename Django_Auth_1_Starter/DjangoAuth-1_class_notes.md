@@ -11,14 +11,14 @@ Authentications
 
 ### Summary
 - Create project
-- Secure your project (interview da cikabilir. Django da proje nasil secure hale getirilir diye)
+- Secure your project
   - .gitignore
   - django-decouple
 - Create app
 - Login Admin Site
   - Migrate
   - Create superuser
-- Add users programmatically (terminal den user ekleme islemi. yani admin panelden tek tek manuel degil.)
+- Add users programmatically
 - Adding users with auth
   - Modify project url pattern
   - Create url on app
@@ -46,27 +46,7 @@ The primary attributes of the default user are:
 - first_name
 - last_name
 
-
-###### Deutsch:
-
-Es gibt das Authentifizierungssystem von Django in seiner Standardkonfiguration.
-
-Diese Konfiguration wurde entwickelt, um die häufigsten Projektanforderungen zu erfüllen, eine relativ breite Palette von Aufgaben zu bewältigen und Passwörter und Berechtigungen sorgfältig zu implementieren.
-
-Für Projekte, bei denen die Authentifizierungsanforderungen vom Standard abweichen, unterstützt Django eine umfassende Erweiterung und Anpassung der Authentifizierung.
-
-user Objekte sind der Kern des Authentifizierungssystems. Sie stellen normalerweise die Personen dar, die mit Ihrer Website interagieren, und werden verwendet, um Dinge wie die Zugriffsbeschränkung, die Registrierung von Benutzerprofilen, die Verknüpfung von Inhalten mit Erstellern usw. zu ermöglichen.
-
-Die primären Attribute des Standardbenutzers sind:
-- username
-- password
-- email
-- first_name
-- last_name
-
 The authentication that comes with Django is good enough for most common cases, but you may have needs not met by the out-of-the-box defaults.
-
-Die mit Django gelieferte Authentifizierung ist für die meisten gängigen Fälle gut genug, aber möglicherweise haben Sie Anforderungen, die von den standardmäßigen Standardeinstellungen nicht erfüllt werden.
 
 
 ### Django Authentication System
@@ -74,13 +54,6 @@ Die mit Django gelieferte Authentifizierung ist für die meisten gängigen Fäll
 According to Django the authentication system aims to be very generic, and so does not provide some features provided in other web authentication systems. Solutions for some common problems are available as third-party packages. For example, throttling of login attempts and authentication against third parties (e.g. OAuth).
 
 The necessary configuration was all done for us when we created the app using the django-admin startproject command. The database tables for users and model permissions were created when we first called python manage.py migrate.
-
-
-# Deutsch:
-
-Laut Django zielt (hedefler) das Authentifizierungssystem darauf ab, sehr generisch zu sein und bietet daher einige Funktionen nicht, die in anderen Webauthentifizierungssystemen bereitgestellt werden. Lösungen für einige allgemeine Probleme sind als Pakete von Drittanbietern (Third party packages) verfügbar. Zum Beispiel Drosselung von Anmeldeversuchen und Authentifizierung gegenüber Dritten (z. B. OAuth).
-
-Die erforderliche Konfiguration wurde für uns erledigt, als wir die App mit dem Befehl django-admin startproject erstellt haben. Die Datenbanktabellen für User und model permissions wurden erstellt, als wir zum ersten Mal python manage.py migrate aufgerufen haben.
 
 ```py
 INSTALLED_APPS = [
@@ -91,11 +64,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     ...
-    'django.contrib.sessions.middleware.SessionMiddleware',  
-    # Manages sessions across requests
+    'django.contrib.sessions.middleware.SessionMiddleware',  # Manages sessions across requests
     ...
-    'django.contrib.auth.middleware.AuthenticationMiddleware',  
-    #  Associates users with requests using sessions.
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  #  Associates users with requests using sessions.
     ....
 ```
 
@@ -169,16 +140,11 @@ cd .\src\
 
 Add standard .gitignore file to the project root directory. 
 
-Fügen Sie dem Stammverzeichnis des Projekts die standardmäßige .gitignore-Datei hinzu.
-
 Do that before adding your files to staging area, else you will need extra work to unstage files to be able to ignore them.
 
 ### python-decouple
 
 - To use python decouple in this project, first install it:
-
-
-Um Python Decouple in diesem Projekt zu verwenden, installieren Sie es zuerst:
 ```py
 pip install python-decouple
 ```
@@ -188,9 +154,6 @@ pip install python-decouple
 from decouple import config
 ```
 - Create .env file on root directory. We will collect our variables in this file.
-
-
-Erstellen Sie eine .env-Datei im Stammverzeichnis. Wir werden unsere Variablen in dieser Datei sammeln.
 ```py
 SECRET_KEY = o5o9...
 ```
@@ -240,6 +203,7 @@ python manage.py migrate
 ```py
 python manage.py createsuperuser  # or with the parameters
 python manage.py createsuperuser --username admin --email admin@mail.com
+ilk kod yazma asamasinda first_name ve last_name olusturmamiza izin vermiyor. daha sonradan ekliyoruz. 
 ```
 - Enter your desired username, email adress, and password twice.
 - Run server.
@@ -269,19 +233,37 @@ Below you can see the class diagrams for User as well as Permission and Group.
 ![](DjangoAuthModels.png)
 
 
-# Add users programmatically
+# Add users programmatically (shellden user ekleme islemi)
+eger ileride bizden binlerce kisiden olusan bir sirketin user larini create etme görevi verilirse bir for loop olustururuz ve hepsini ayni anda olusturur
 
 https://docs.djangoproject.com/en/3.2/topics/auth/default/
 
 The most direct way to create users is to use the included create_user() helper function:
 ```py
 python manage.py shell
-
+ilk olarak sunu yazalim. Shell i her kapatip actigimizda bu kod gerekli. 
 from django.contrib.auth.models import User
 
 # Create user and save to the database
 # create_user(username, email=None, password=None, **extra_fields)
+### username positional digerleri ise keyword argument
+
 # Creates, saves and returns a User.
+
+    ## burada  create_user;  User modeline ait bir method tur. 
+    ## benim yazdigim kodlar:
+user1 = User.objects.create_user("veli", email="veli@gmail.com")
+user1.first_name = "veliveli"
+user1.is_superuser = True
+user1.is_staff = True
+user1.last_name = "kaya"
+user1.save()
+
+### Önemli:
+user üzerinde yapilan her degisiklikten sonra user.save() demezsek degisiklik yapmaz.
+
+
+
 user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypassword')
 # The username and password are set as given. 
 # The domain portion of email is automatically converted to lowercase, and the returned User object will have is_active set to True.
@@ -289,6 +271,7 @@ user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypasswo
 # The extra_fields keyword arguments are passed through to the User’s __init__ method to allow setting arbitrary fields on a custom user model.
 # Extra fields:
 User.objects.create_user('john', email='lennon@thebeatles.com', password='johnpassword', is_staff=True)
+### user positional argument
 # Or
 user.is_staff=True 
 user.save()
@@ -301,14 +284,33 @@ user.save()
 
 Django does not store raw (clear text) passwords on the user model, but only a hash (see documentation of how passwords are managed for full details). Because of this, do not attempt to manipulate the password attribute of the user directly. This is why a helper function is used when creating a user.
 
+## Önemli:
+
+Db de normal password saklanmaz. Su komutu calistirdigimizda normal bir sekilde password sütununa atama yapar. ama bu komutu kullandigimizda hash leme yapilmaz direkt olarak db de password görünür. BU NEDENLE KULLANMIYORUZ:
+
+user1.password = "123456"
+
+Bunun yerine shell i kapatiyoruz normal terminal de :
+
 ```py
-manage.py changepassword <username>
+python manage.py changepassword <username>
+
+yaziyoruz. Bizim karsimiza password degisiklik paneli cikiyor. 
+
+#### Password degisikligi icin daha kolay bir yöntem:
+
+normal shell kullaniyorken su kodlar calistirilir:
+(Bu yöntem de bize hashlenmis password saglar.)
+
+>>> user1.set_password("123456") 
+>>> user1.save()
 
 # You can also change a password programmatically, using set_password():
 from django.contrib.auth.models import User
 
 u = User.objects.get(username='john')
 u.set_password('new password')
+## db ye hashlenmis bir sekilde kayit saglar. bunu da superuser bile göremez. db ye hicbir sifre hashlenmeden kaydedilmez. django bunu otomatik yapar sha 256 ya göre. bu da cok güclü algoritma
 u.save()
 ```
 
@@ -320,6 +322,11 @@ Changing a user’s password will log out all their sessions.
 
 
 # Add users with auth
+
+https://docs.djangoproject.com/en/4.1/topics/auth/default/
+bu linkte yaklasik ortalarda authentication views diye kisim var. 
+burada django nun bize sagladigi hazir template ler var.
+login sayfasi logout sayfasi gibi sayfalar  
 
 We want to allow adding regular users to our app.
 
@@ -452,7 +459,10 @@ Navigate back to the login page (http://127.0.0.1:8000/accounts/login/) once you
 - Open the project settings.py and add the text below to the bottom. Now when you log in you should be redirected to the site homepage by default.
 ```py
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
+## django default olarak profile a redirect eder
 LOGIN_REDIRECT_URL = "/"
+## setttings.py da en alta yapistir. nereye gitmesini istiyorsak, mesela home.
+## static olarak el ile adres yolu yazmak bizim icin sikinti. o nedenle burada name ini yazdik dynamic olur. 
 ```
 - From now on, when someone login the page, the page will be redirected to home page.
 
@@ -462,6 +472,9 @@ LOGIN_REDIRECT_URL = "/"
 - Go to views.py, create new view:
 
 ```py
+
+## django sadece register sayfasi sunmaz kendimiz yapariz.
+# # bunun icin de django dan hazir form import edilir 
 # First import UserCreationForm
 from django.contrib.auth.forms import UserCreationForm
 
@@ -531,16 +544,26 @@ def register(request):
         if form.is_valid():
             form.save()
             # that creates a new user
-            # after creation of the user, want to authenticate it
+            # after creation of the user, want to authenticate it yani hem de login
+            # yapmak zorunda degiliz user register olduktan sonra kendi de login olabilir
+
+            ## burada username gibi isimleri, sayfada inspect deyip html deki name tag larina bakiyoruz. 
             username = form.cleaned_data['username']
+            username = form.cleaned_data.get('username')
+            ## cleaned_data  dict formatinda return eder. valid olmus verileri alir. 
             password = form.cleaned_data['password1']
             # inspect the page and see the first password is password1, import authenticate
             user = authenticate(username=username, password=password)
+            ## user i önce autenticate edip sonra login yapiyoruz.
+
+            ## neden cleaned_data https://backend11tr.slack.com/archives/C03AS204C4V/p1661369046480419 (edited) 
             
             # want user to login right after registered, import login
             login(request, user)
             # want to redirect to home page, import redirect
             return redirect('home')
+
+            ##  eger user i register olduktan sonra login yapmak istemezsek, bu durumda register olan user i login sayfasina yönlendirebiliirz. return redirect('login') buradaki login ismi documentations daki hazir login sayfasinin isminden gelir. 
             
     else:
         form = UserCreationForm()
@@ -551,6 +574,7 @@ def register(request):
     
     return render(request, "registration/register.html", context)
 ```
+register html de button ve csrf token gerekir
 
 - Lets try to create a new user again
 - It must redirect to homepage
@@ -575,6 +599,8 @@ The default password reset system uses email to send the user a reset link. You 
 
 - Add view
 ```py
+
+    ## bize otomatik change formu gelir ama sen bunu da dene bakalim ekstra view
 def password_change(request):
     if request.method == 'POST':
         # We will use user change form this time
@@ -591,11 +617,12 @@ def password_change(request):
     }
     
     return render(request, "registration/password_change.html", context)
+    ## docs da hepsi yaziyor. default password_change_form.html
 ```
 
 - Add registration/password_change.html
 ```html
-<h1>Password cchange</h1>
+<h1>Password Change</h1>
 
 <form method="post">
 
@@ -620,8 +647,24 @@ urlpatterns = [
     path('', home_view, name="home"),
     path('register', register, name='register'),
     path('password_change/', auth_views.PasswordChangeView.as_view(template_name="registration/password_change.html"), name="password_change")
+
+    ## django nun kendi view ini kullandik sadece template name inde degisiklik yaparak kendi template imizi kullandik 
+    ## bu islemi yapinca url de accounts yazmamiza gerek kalmiyor
+    ## djangonun verdigi template i de kullanip deneyelim 
+    ## password change isleminde login degilsek önce login ol der
 ]
 ```
+    ## docs da yazili olan islemlere ait template isimleri ile ayni ada sahip template olusturursak bizimkini return eder. ama bu islemde önce kendi default unu okur. bizim kini okumaz. bu nedenle installed_apps da settings.py da en üste bizim kendi app imizi yazariz. 
+    ## genelde template in overwrite i view de yapilir. burada yaptigimiz ise ince bir is 
+
+    ### django bize registration altinda sunu sunu olustur der diyor. bu ypilarin aynisi env dosyasi icinde contrib de var. inceleyelim 
+
+
+
+
+    ### password reset bilgiler docs dan bakalim 
+    ## accounts/  da password reset in kendi template ine bakalim 
+
 
 ### Adjust a mail backend for development (Console backend):
 
@@ -631,7 +674,29 @@ To specify this backend, put the following in your settings:
 
 ```py
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+bu ayari settings.py a yapistir. diger bir husus mail gönderecek ve kayitli kisinin mail adresi olmasi lazim. 
 ```
+
+<p>We've emailed you instructions for setting your password, if an account exists with the email you entered. You
+should receive them shortly.</p>
+
+<p>If you don't receive an email, please make sure you've entered the address you registered with, and check your
+spam folder.</p>
+
+docs da console backend bak. gercek mail yerine console da dummy mail gönderir. bize console da bir yazi döner. buradaki yaziyi da overwrite edebilirz. mail de hata oldugunda birsey dönmez. bunun icin formu overwrite etmemiz lazim. yazi icinde link var tiklayinca degisiklik sayfasi cikar. 
+
+password_reset_done.html  adinda kendi html imizi olusturduk. 
+password_reset_confirm.html  adinda kendi html imizi olusturduk. 
+
+password_reset_complete.html  adinda kendi html imizi olusturduk.
+bu sayfaya a tagi ile login tusu koyuyoruz. user tekrar login olabiliyor. 
+
+
+docs da tüm islemler sira ile var
+
+
+
 
 ### Logout
 
@@ -651,3 +716,33 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 https://django-allauth.readthedocs.io/en/latest/overview.html
 
 https://docs.djangoproject.com/en/3.2/topics/auth/customizing/
+
+
+
+## 
+eger login icin hazir olan template i de overwrite etmek istersek,
+settings.py da LOGIN_URL = "tariks_login"  seklinde yazacagiz. 
+normal de name olarak login gömülü gelir.
+
+
+
+
+####  decorator:
+
+bir sayfa istiyoruz, o sayfaya login olmayan giremesin. 
+views.py da 
+from django.contrib.auth.decorators import login_required
+
+ve special view i üstüne:
+
+@login_required yazilir
+
+bunu yaptigimizda; special sayfasina girmek istedigimizde önce logine yönlendirir. url de next special yazar. bu demek olur ki; login isi bittiginde special a git. 
+
+decorator larin amaci  dry
+
+yani devamli kullanilacak seyler varsa hazir decorator yazmak 
+
+decoratorlar,  onun altina yazdigimiz func i alir, ve decorator icinde calistirir 
+
+
