@@ -248,7 +248,7 @@ from django.contrib.auth.models import User
 # create_user(username, email=None, password=None, **extra_fields)
 ### username positional digerleri ise keyword argument
 
-# Creates, saves and returns a User.
+# Creates, saves and returns a User. Yani create_user methodu ekstra dan save demeye ihtiyac duymaz. direkt save eder. 
 
     ## burada  create_user;  User modeline ait bir method tur. 
     ## benim yazdigim kodlar:
@@ -269,6 +269,7 @@ user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypasswo
 # The domain portion of email is automatically converted to lowercase, and the returned User object will have is_active set to True.
 # If no password is provided, set_unusable_password() will be called.
 # The extra_fields keyword arguments are passed through to the User’s __init__ method to allow setting arbitrary fields on a custom user model.
+
 # Extra fields:
 User.objects.create_user('john', email='lennon@thebeatles.com', password='johnpassword', is_staff=True)
 ### user positional argument
@@ -310,8 +311,9 @@ from django.contrib.auth.models import User
 
 u = User.objects.get(username='john')
 u.set_password('new password')
-## db ye hashlenmis bir sekilde kayit saglar. bunu da superuser bile göremez. db ye hicbir sifre hashlenmeden kaydedilmez. django bunu otomatik yapar sha 256 ya göre. bu da cok güclü algoritma
 u.save()
+## db ye hashlenmis bir sekilde kayit saglar. bunu da superuser bile göremez. db ye hicbir sifre hashlenmeden kaydedilmez. django bunu otomatik yapar sha 256 ya göre. bu da cok güclü algoritma
+
 ```
 
 If you have the Django admin installed, you can also change user’s passwords on the authentication system’s admin pages.
@@ -319,6 +321,26 @@ If you have the Django admin installed, you can also change user’s passwords o
 Django also provides views and forms that may be used to allow users to change their own passwords.
 
 Changing a user’s password will log out all their sessions.
+
+### Django da password degistirme yöntemleri:
+
+1: shell kullanarak set_password
+2: normal powershell kullanarak python manage.py changepassword <username>
+3: admin panel kullanarak
+4: django nun saglamis oldugu form ve view ler ile. 
+
+##
+User.objects.all() dedigimizde bize query set döner. Biz istedigimiz user i alabilmek icin 
+users = User.objects.all()
+users[1] diyerek de alabiliriz. 
+
+## Önemli:
+Django docs da orm komutlari ile query ler ile her türlü detay var.
+
+Bu linkte de query methodlarinin hepsi var:
+https://docs.djangoproject.com/en/4.1/ref/models/querysets/#queryset-api
+
+
 
 
 # Add users with auth
