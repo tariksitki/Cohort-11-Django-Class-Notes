@@ -1,0 +1,13 @@
+
+default user islemlrini kullanmak icin users adinda bir app olusturduk.
+default islemler icin; template altinda; registration diye klasör olusturmak zorundayiz. 
+
+accounts url i altinda register icin template bulunmaz. kendimi yaziyoruz.
+
+eger djangonun default olarak gönderdigi yerlere gitmek istemiyorsak login ve logout dan sonra
+settings.py da su kodlar yazilir. 
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
+
+
