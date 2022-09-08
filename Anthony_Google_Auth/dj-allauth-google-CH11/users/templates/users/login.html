@@ -1,0 +1,20 @@
+
+{% extends 'users/base.html' %} 
+{% load static  %}
+{% block content %} 
+
+
+<div style="width: 75%;align-items:center;justify-content:center;margin:1rem; border:1px solid grey">
+    <h2 class="m-3" style="display:block;">Login</h2>
+    <hr>
+
+
+
+<div class="w-100 m-2">
+    <form action="" method="post">
+        {% csrf_token %} {{form.as_p}}
+        <button type="submit" class="btn btn-danger mt-2">Login</button>
+    </form>
+</div>
+</div>
+ {% endblock content %}

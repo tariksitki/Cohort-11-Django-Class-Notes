@@ -1,0 +1,94 @@
+https://django-allauth.readthedocs.io/en/latest/installation.html
+
+Burada dökümantasyonda hersey anlatiliyor. 
+
+# Provider specific settings:
+## Bunu anthony hoca bulmus. docs dakini almadik.
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+LOGIN_REDIRECT_URL = 'home'
+
+
+
+
+
+1- dosyamızı açtık ve python -m venv env ile envmizi oluşturduk
+2- env/Scripts/activate ile envmizi aktifleştirdik
+3- pip install -r requirements.txt ile gerekli paketleri yükledik
+4- gerekiyorsa python.exe -m pip install --upgrade pip ile pip güncelledik
+5- .env dosyası oluşturulacaksa SECRET_KEY eklemeyi unutmayalım
+6- python manage.py runserver ile rokete hazırız
+
+
+
+https://console.developers.google.com/
+
+Bu adresten key alacagiz. react da yapmadik cünkü firebase kullandik. 
+
+
+http://localhost:8000/accounts/google/login/callback/
+
+your client id
+432829415111-r3gqecrugrrvl4rcjpseksvtl26udgn7.apps.googleusercontent.com
+
+
+your client secret 
+
+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
+
+
+
+login.html 
+
+{% load socialaccount %}
+<a href="{% provider_login_url 'google' %}">Login with Google</a>
+
+bunlari yaptiktan sonra url de logine gideriz. 
+
+site_id   url de kac yaziyorsa onu yazacagiz. 
+
+
+user in resmini almak istiyoruz. gmail hesabindaki resmi getirir. homee.html de yazariz bu kodu
+<img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
+
+
+login template i owerwrite etmek icin 
+
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+{% load socialaccount %}
+
+<div style="width: 75%;align-items:center;justify-content:center;margin:1rem; border:1px solid grey">
+    <h2 class="m-3" style="display:block;">Login</h2>
+    <hr>
+
+
+
+    <div class="w-100 m-2">
+        <form action="" method="post">
+            {% csrf_token %} {{form.as_p}}
+            <button type="submit" class="btn btn-danger mt-2">Login</button>
+        </form>
+        <form action="{% provider_login_url 'google' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Form Google</button>
+        </form>
+        <!-- <a href="{% provider_login_url 'google' %}">Login with Google</a> -->
+    </div>
+</div>
+{% endblock content %}
+
+
+blog app gibi projelerde request.user dememiz yeterli. O anda kim login ise onu verir. 
+

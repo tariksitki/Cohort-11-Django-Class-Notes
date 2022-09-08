@@ -1,0 +1,82 @@
+1- githuba commitlediğimiz projemizin linkini "code" kısmından kopyaladık
+2- pythonanywhere dashboard> $bash butonunu yeni sekmede açıyoruz
+3- kopyaladığınız linki "git clone ....." şeklinde yapıştırıyorsunuz
+4- daha sonra cd appismi ile masterlık alıyoruz
+5- python -m venv env ile env ortamını açıyoruz
+6- source env/bin/activate ile aktifleştiriyoruz
+7- pip install -r requirements.txt ile reqi download ediyoruz
+8- echo SECRET_KEY=secretkeyiniz > .env ile env dosyası oluşturuyoruz
+9- python manage.py migrate ile migrate ediyoruz
+10- web sekmesinden new app > next>manual> python 3.9>next
+11- bash> pwd> yolu kopyala > web> source code> yapıştır > working directory > yapıştır
+12- web> wsgi configuration file tıkla> açılan ekranda sadece DJANGO başlığı kalacak şekilde sil temizle(16 satır kod kalacak)> 8. satırda path kısmına kopyaladığımız pathi ekle> 12. satırda settingsin soluna proje adımızı yazıyoruz
+
+
+
+
+
+
+Note: echo SECRET_KEY=jhsdöfodshfdsohjf > .env     (Bu komut bizim manuel olusturdugumuz .env dosyasinin kod ile olan hali)
+ikinci yöntem;  python anywhere de newfile demek
+ücüncü yöntem ise;  upload etmek
+
+
+Not: secret key local deki ile ayni olmak zorunda degil. 
+
+
+Not: allowed host hatasi alanlar settings.py da su komutu eklesin:
+
+Invalid HTTP_HOST header: 'fatihg.pythonanywhere.com'. You may need to add 'fatihg.pythonanywhere.com' to ALLOWED_HOSTS.
+
+ALLOWED_HOST = ["*"]
+
+
+
+Note:  ekranda something went wrong icin  debug = True yapmamiz lazim.
+bunun degisikligi icin local de yapmak zorunda degiliz. anywhere ekraninda da ayapabiliriz. 
+Bunu yapmamiza ragmen olmazsa bastan tekrar islemleri yapalim
+
+
+Note: settings.py da degisiklik yaptiktan sonra reload yapmayi unutmayalim.
+
+
+Note: Projemizde degisiklik yaptigimizda kendisi güncellemez ise reload tusuna basmamiz gerekir. 
+
+
+
+rm -rf *    herseyi siler  enywhere bash de 
+
+
+
+Not: fotolar cikmayanlar:
+settings.py da static dirs in yanindaki kod da    /static/ yazisi yerine  todo/static
+STATIC_ROOT = BASE_DIR / 'todo/static/'
+bu koddan sonra
+
+urls.py da main urls 
+from django.conf import settings
+from django.conf.urls.static import static
+# url -> static-files-path:
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
