@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django.contrib.sites',
         ## buradan asagisi biz ne istersek onu yükleriz. 
-    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.google', 
 
 ]
 
