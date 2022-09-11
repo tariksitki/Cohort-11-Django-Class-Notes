@@ -84,7 +84,7 @@ settings.py da herseyin bir arada olmasi cok iyi degil. Bu nedenle prod da gerek
 
 
 git ve github da branc ile calismanin tekrarini yapalim. 
-branch degistirmeler. pull request 
+branch degistirmeler. pull request     
 
 
 
