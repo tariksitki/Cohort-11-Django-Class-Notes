@@ -1,3 +1,12 @@
+
+md ve png dosyalarini detayli okuyalim. 
+
+Bu proje hash leme yapar. yani browser daki textarea ya veri gireriz ve bu veriyi hashleme yaparak kriptolama yapar. 
+
+hashleme;  bir girdiyi bir algoritmaya göre sifrelemek ve sifrelenmis cikti vermek. Buna hashing denir. Bir girdiye her zaman aynı sonucu veren bir algoritma. mesela hello yazdigimizda hep ayni sonucu verir 
+
+Ikinci olarak hashing anlami: pythonda listelerde bir item in aramasini yaptigimizda; sirasi ile arama yapar ve bu nedenle veri sayisi arttikca arama süresi uzar. set lerde ise bu böyle degildir. bizim aradigimiz item i belirli bie hash algoritmasina göre arar. Bu nedenle sira ile gitmez ve veri sayisi arttikca arama süresi cok artmaz. 
+
 console da da biz aslinda birseylerin dogru calisip calismadigini test ediyoruz. Bu nedenle kismi olarak test e girer
 
 Üretilmiş yazılımın piyasaya sürülmeden once hataların ve eksiklerinin belirlenip yazılım ekibiyle paylaşılması akabinde update edilerek yayınlanması
@@ -12,4 +21,45 @@ Tüm bu emeklerin amaci, uygulamanin eksiksiz calismasini saglamaktir.
 
 CI (integrity) / CD (delevery) ile uygulamamiz 24 saat calisir. uygulamamiz hizmette iken test yapma imkani verir. 
 Bu alanda developerlar ve devops cular ortak calisir. 
+
+1: functional test : user in bizim app ile etkilesime girdigi noktalarin test edilmesi.
+
+2: manuel test 
+
+3: unit test : daha cok arka planda bizim yazdigimiz kodlarin ayri ayri test edilmesi. biraz daha kücük oranda denebilir. 
+
+4: integrity test : farkli modüllerin birlikte düzgün calisip calismadigini kontrol etmek.  entegration dan gelir. 
+
+
+test icin selenium kullanacagiz. 
+
+Biz cok sayida test yapacagimiz icin her bir kod icin ayri test dosyasi yapabiliriz. aksi takdirde cok karnasik olabilir. basi test ile baslamasi django icin yeterli. test_model gibi. 
+
+
+varsayilan tarayici test yaptigimiz ile ayni olmali. 
+
+
+
+
+#########   brave browser settings:
+
+from selenium import webdriver  
+
+driverPath = 'env/bin/chromedriver'
+binaryPath = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
+options = webdriver.ChromeOptions()
+options.binary_location = binaryPath
+browser = webdriver.Chrome(executable_path=driverPath, chrome_options=options)
+browser.get("http://localhost:8000")
+
+
+
+functional test: frontend test
+unit test: backend test
+
+
+    Normal durumlarda;
+
+- uygulamayi gelistirmeye baslayinca hemen test yazmaya baslarsak is biraz agir olabilir. o nedenle ilk versiyon ciktiktan sonra test yazmaya baslarsak daha mantikli olabilir. cünkü ilk asamada kod cok degisecek. 
+
 

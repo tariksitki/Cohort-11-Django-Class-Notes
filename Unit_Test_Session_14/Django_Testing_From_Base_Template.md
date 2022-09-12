@@ -128,12 +128,14 @@ Other supported browsers will have their own drivers available. Links to some of
 - Go to [chromedriver webpage](https://sites.google.com/a/chromium.org/chromedriver/downloads)
 - How to check your version of Chrome:
   - On your computer, open Chrome.
-  - At the top right, look at More.
+  - At the top right, look at More. (sag üstteki 3 noktaya tiklayalim)
   - Click Help > About Chrome.
 - Click the link according to your chrome version
 - Install driver according to your OS
 - Unzip downloaded file,
 - Put chromedriver.exe inside /env/bin/ for mac, linux or /env/Sripts/ for windows.
+
+Bu driver arka planda bir browser ayaga kaldiracak ve bizim kodlarimizi bu browser da test edecek 
 
 ###  Install geckodriver
 - Go to [geckodriver webpage](https://github.com/mozilla/geckodriver/releases)
@@ -156,6 +158,8 @@ browser.get('http://localhost:8000')
 ```
 - After creating the project run the test. Use second terminal, we need the server up and running
 - Run the test:
+Normal projemiz terminalde calisirken biz baska bir powershell acariz ve test kodu yazariz. 
+
 ```py
 python manage.py test
 ```
@@ -191,6 +195,8 @@ class FunctionalTestCase(TestCase):
     # The tearDown method will get called after every test method. This is a place to do all cleanup actions. In the current method, the browser window is closed. You can also call quit method instead of close. The quit will exit the entire browser, whereas close will close a tab, but if it is the only tab opened, by default most browser will exit entirely.
     def tearDown(self):
         self.browser.quit()
+
+    ## buraya kadar ki kodlari calisitirp terminal de her seferinde test kodu calistirilir.
 ```
 - There are other use cases of setUp function:
 ```py
@@ -210,6 +216,8 @@ The default startapp template creates a tests.py file in the new application. Th
 Test discovery is based on the unittest module’s built-in test discovery. By default, this will discover tests in any file named “test*.py” under the current working directory.
 You can specify particular tests to run by supplying any number of “test labels” to ./manage.py test. Each test label can be a full Python dotted path to a package, module, TestCase subclass, or test method. For instance:
 ```
+manage.py test kodu tüm test leri calistirir. 
+
 # Run all the tests in the animals.tests module
 $ ./manage.py test animals.tests
 
@@ -218,6 +226,8 @@ $ ./manage.py test animals
 
 # Run just one test case
 $ ./manage.py test animals.tests.AnimalTestCase
+
+    ## Bu kod birden cok test dosyamiz oldugunda sadece istedigimiz dosyadaki test i calistirmamizi saglar. 
 
 # Run just one test method
 $ ./manage.py test animals.tests.AnimalTestCase.test_animals_can_speak
@@ -420,6 +430,7 @@ and look for the results, especially results with stackoverflow!
 import hashlib
 
 
+
 def test_hash_func_works(self):
         # Need to import haslib library to generate hash
         text_hash = hashlib.sha256('hello'.encode('utf-8')).hexdigest()
@@ -461,6 +472,10 @@ def test_hash_object(self):
 - Even in development db, need to isolate testing db, not to mess up with the development db.
 - Go to the settings.py
 - Add test db under DATABASES, copy from previous db, change it, and add:
+asagidaki kod settings.py daki databes kisminin icine yapistirilir. 
+
+zaten bizim kullandigimiz ve inherit ettigimiz TestCase class i bir db ayaga kaldirir ve söndürür. eger o bunu yapmasaydi biz bu kodu kullanacaktik. 
+
 ```py
 'TEST_NAME': BASE_DIR / 'test_db.sqlite3',
 ```
@@ -486,6 +501,7 @@ When user enters a text to see the corresponding hash, the page will be redirect
         self.assertContains(response,'hello')
 ```
 - (Optional) You can update your code combining occurrencies of saveHash(Optional):
+    Tekrarlayan islemleri tek yerde toplama:
 ```py
 def saveHash(self):
     hash = Hash()
@@ -522,11 +538,15 @@ python manage.py test
 - Run your functional and unit tests locally
 - Deploy your code to a staging server, this is not a live server, it is seperate from production.
   - Have a custom domain for that
-  - Run your functional tests againist staging site and your unit tests againist staging server.
+  - Run your functional tests against staging site and your unit tests againist staging server.
 - Push your code to production
 - Automate the process, every time you deploy a new code, this process will run again and again
 
-## TDD vs. Testing After
+## TDD (test drived Development) vs. Testing After
+
+-- iyi bir döküman ve iyi bir isterler listesi yazilirsa projeden önce o zaman mantikli olabilir
+
+TDD unit test ler ile yapilir. TDD deyince akla unit test gelir.
 
 - Tests can take away joy, speed, and motivation
 - When a project is young, it changes too much for testing
@@ -548,6 +568,8 @@ coverage run --omit='*/env/*' manage.py test
 # After the first pass you can get a coverage report with:
 coverage report
 # You can also generate an HTML report with (a new folder called htmlcov will appear inside the project root):
+
+    ## eger kod coverage imiz daha güzel görünsün istersek, su kodu yazariz. Bu kod bize html adinda bir klaösr olusturur. Bu klasör icindeki inde.html i browser da acinca daha detayli bir coverage sunar. 
 coverage html
 ```
 

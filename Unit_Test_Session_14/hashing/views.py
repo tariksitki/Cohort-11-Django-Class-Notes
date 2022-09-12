@@ -28,4 +28,15 @@ def home(request):
 
 def hash(request, hash):
     hash = Hash.objects.get(hash=hash)
-    return render(request, 'hashing/hash.html', {'hash':hash})
+    return render(request, 'hashing/hash.html', {'hash': hash})
+
+
+
+
+### text_hash = hashlib.sha256(text.encode('utf-8')).hexdigest()  
+## bu kodun acilimi:
+## ilk parametre hashlenecek text 
+## ikinci de encode
+## hexdigest ise sifreyi 64 karaktere dönüstürür.
+
+
