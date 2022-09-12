@@ -1,0 +1,15 @@
+console da da biz aslinda birseylerin dogru calisip calismadigini test ediyoruz. Bu nedenle kismi olarak test e girer
+
+Üretilmiş yazılımın piyasaya sürülmeden once hataların ve eksiklerinin belirlenip yazılım ekibiyle paylaşılması akabinde update edilerek yayınlanması
+
+
+Bir yazilimin bir yapinin istenilen sonucu verip vermedigini kontrol etmektir test.
+
+
+Her yazdigimiz kisa bir koddan sonra test etmek imkansiz olabilir. Bu nedenle test isinin otomasyona dökülmesi gerekir. Bu nedenle büyük projelerde,   development ortami, test ortami ve product ortami olur. ve bunlar icin de de ayri branch ler olur. 
+
+Tüm bu emeklerin amaci, uygulamanin eksiksiz calismasini saglamaktir. 
+
+CI (integrity) / CD (delevery) ile uygulamamiz 24 saat calisir. uygulamamiz hizmette iken test yapma imkani verir. 
+Bu alanda developerlar ve devops cular ortak calisir. 
+
