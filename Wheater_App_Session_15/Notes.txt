@@ -1,4 +1,5 @@
 
+Bu projede api den hava durumu bilgisi cekecegiz ve template de yazdiracagiz. 
 
 Bu projede kullandigimiz api Hizmeti adresi:
 
@@ -23,4 +24,19 @@ Biz verilerimizi api endpointleri vasitasi ile disari aktaracagiz.
 
 Api de document cok önemli. 
 
+
+silmek istedigimiz paketler uninstall komutu ile silinir. sadece requirements dan silmemiz yeterli degil. 
+
+
+
+
+### icon larimizin id lerine göre resimleri nasil cekecegimiz:
+Bu siteye gidilir oradaki url kopyalanir ve url icine kendi kodumuzu yazariz. 
+
+https://openweathermap.org/weather-conditions
+
+
+
+
+Bazen hata aldigimizda sebebini bulamazsak, env silip yeniden yükleyelim. 
 
