@@ -1,0 +1,26 @@
+
+
+Bu projede kullandigimiz api Hizmeti adresi:
+
+https://openweathermap.org/current#name
+
+API nedir ? 
+application programming interface
+
+Verimizi json, xml, html formatinda birden fazla platfiorma acik hale getirme, dis dünyaya acma 
+
+api nedir ?
+https://aws.amazon.com/tr/what-is/api/
+
+rest api:  durumdan bagimsiz. istemci eger uygun bir istek atti ise sunucuya, bu durumda istemcinin kim oldugu önemli degildir. 
+
+
+eger bir site api hizmeti sunmuyorsa bu durumda web scraping ile o siteden veri cekilebilir. özellikle e ticaret sitelerinde bu yaygin. 
+python da selenium ile yapilir. 
+
+
+Biz verilerimizi api endpointleri vasitasi ile disari aktaracagiz. 
+
+Api de document cok önemli. 
+
+
