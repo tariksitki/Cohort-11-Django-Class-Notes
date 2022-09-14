@@ -146,19 +146,21 @@ asagidaki kodlar admin.py da
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("name", "create_date", "is_in_stock", "update_date")
     list_editable = ( "is_in_stock", )
-    # list_display_links = ("create_date", ) #can't add items in list_editable to here
+    # list_display_links = ("create_date", name) hangi veriler üzerinde link olsun istersek o verileri tuple icine yazariz.  
+    # #can't add items in list_editable to here
     ## yani üzerinde tiklanacak link olan degerler edite edilemez. tiklama ile edit karismasin diye.  ama yine degistirmek istersek readonly_fields = ("bring_image",) kullanilir. 
     list_filter = ("is_in_stock", "create_date")
     ordering = ("name",)  
-    search_fields = ("name",)
+    search_fields = ("name",) # bir tane input getirir admin panele. arama icin
     prepopulated_fields = {'slug' : ('name',)}   # when adding product in admin site
     list_per_page = 25
-    date_hierarchy = "update_date"
-    # fields = (('name', 'slug'), 'description', "is_in_stock") #fieldset kullandığımız zaman bunu kullanamayız
+    date_hierarchy = "update_date" ## action in altinda bir tarih bölmesi cikarir. Bu tarihler arasinda oklar ile gezeriz. 
+    # fields = (('name', 'slug'), 'description', "is_in_stock") # ayni tuple icinde olanlari yan yana koyar. 
+    # #fieldset kullandığımız zaman bunu kullanamayız
 
     fieldsets = (
         (None, {
-            "fields": (
+            "deneme": (
                 ('name', 'slug'), "is_in_stock" # to display multiple fields on the same line, wrap those fields in their own tuple
             ),
             # 'classes': ('wide', 'extrapretty'), wide or collapse
@@ -190,7 +192,10 @@ actions section:
 
 Add methods to modelAdmin:
 
+
 ```python
+from django.utils import timezone
+
 		list_display = ("name", "create_date", "is_in_stock", "update_date", "added_days_ago")    
 	
 	    def added_days_ago(self, product):
@@ -204,7 +209,7 @@ Add methods to modelAdmin:
 
 
 
-### RichText Editors
+### RichText Editors (Description yazarken daha güzel bir editör)
     WYSIWYG (what you see is what you get)
 
     https://djangopackages.org/grids/g/wysiwyg/
@@ -234,6 +239,8 @@ settings.py
             'width' : 1000
         }
     }
+
+    büyüklük ayarlari degistirilebilir. 
 ```
 * Note: ilgili template dosyasında: {{description | safe}}
 
@@ -278,9 +285,10 @@ class ReviewAdmin(admin.ModelAdmin):
 admin.site.register(Review, ReviewAdmin)
 ```
 
+asagidaki kod, her bir product icin 4 tane yorum üretir. yani 199 x 4 tane review olur. 
 shell
 ```
-from products.models import Product, Review
+from product.models import Product, Review
 from faker import Faker
 faker = Faker()
 for product in Product.objects.iterator():
@@ -291,6 +299,8 @@ Review.objects.count()
 ```
 
 ### TabularInline
+Birden cok tabloyu bir sayfada gösterme saglar. 
+yani bir ürüne ait 4 yorum var. her bir yorum icin bir field acar. extra 1 dedigimiz icin 1 tane daha acar. 
 
 admin.py
 ```Python
@@ -323,6 +333,9 @@ class Product(models.Model):
 
 
 ### horizontal & vertical filter (ManytoMany Field)
+yukarida yaptigimiz islemler onetomany icindi. 
+Burada ise manytomany iliskili iki tablonun ayni admin panel de gösterilmesi
+
 
 models.py
 ```Python
@@ -361,7 +374,7 @@ from .models import Product, Review, Category
         })
     )
     filter_horizontal = ("categories", )
-   # fitler_vertical = ("categories", )
+   # filter_vertical = ("categories", )
 
 admin.site.register(Category)
 ```
