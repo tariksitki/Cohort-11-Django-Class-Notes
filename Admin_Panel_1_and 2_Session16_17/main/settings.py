@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product',
     'ckeditor',
+    'django_admin_listfilter_dropdown',
+    'rangefilter',
+    'import_export',
+    
     
 ]
 
@@ -57,7 +62,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,3 +139,16 @@ CKEDITOR_CONFIGS = {
             'width' : 1000
         }
     }
+
+
+
+import os
+
+## ana dizindeki static klasörü icindeki static resimlere bak demek
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")  ## development ortaminda bir func i yok. production asamasi ile ilgilidir. 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

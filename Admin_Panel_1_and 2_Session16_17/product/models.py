@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 
@@ -34,6 +35,11 @@ class Product(models.Model):
         return count
     
     categories = models.ManyToManyField(Category, related_name="products")
+    product_img = models.ImageField(null=True, blank=True, default="defaults/clarusway.png", upload_to="product/")
+    def bring_image(self):
+        if self.product_img:
+            return mark_safe(f"<img src={self.product_img.url} width=400 height=400></img>")
+        return mark_safe(f"<h3>{self.name} has not image </h3>")
 
     class Meta:
         verbose_name = "Product"

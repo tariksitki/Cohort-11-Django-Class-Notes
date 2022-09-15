@@ -385,6 +385,8 @@ admin.site.register(Category)
 
 # Display Image Fields
 
+product in detay sayfasinda foto gösterme: 
+
 settings.py
 ```python
 STATIC_URL = '/static/'
@@ -410,6 +412,8 @@ urlpatterns = [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
+slug: SEO dostu link gibi düşünebiliriz. Örnek: apple-iphone-13-blue-123
+
 models.py
 ```python
 from django.utils.safestring import mark_safe
@@ -420,7 +424,12 @@ product_img = models.ImageField(null=True, blank=True, default="defaults/clarusw
         if self.product_img:
             return mark_safe(f"<img src={self.product_img.url} width=400 height=400></img>")
         return mark_safe(f"<h3>{self.name} has not image </h3>")
+
+## bring_image bize image in html kodunu return eder. Bu kodu da admin panel de fields icine koyariz ve ekrana yazdiririz. 
+## mark safe,  baskalari bizim kodumuza sizip script ler calistirabilir. Bu nedenle django html kodu göndermeye izin vermez kendi iicnde. eger göndereceksek de bu sekilde göndermemizi ister. 
+## self.product_img.url  hangi object ile is yapiyorsak onun img url i demek 
 ```
+Bu islemleri source koduna girip yapabilirdik ama birisi bizim kodumuzu indirdiginde env klasörü gelmez. Bu nedenle bizim degisikliklerimiz gelmemis olur. 
 
 * pip install pillow
 * makemigrations and migrate
@@ -444,7 +453,14 @@ readonly_fields = ("bring_image",)
     )
 ```
 
+
+
 listede image gösterme:
+Önemli:
+Bir methodu model de bir methodu admin de olusturduk. model de olusturdugumuz methodlari o modelin bir field i gibi projenin diger taraflarinda kullanabiliyoruz. Ancak admin.py da yazarsak sadece admin panel ile ilgili. Sadece admin panel de kullanacagimiz seyleri model de yapmaya  gerek yok. model de olusturacagimiz field lar icin self kullanilir. yani o object e ait. 
+modelde kullandigimiz field lari admine tasimak istersek model de self yazdigimiz yerleri orada obj seklinde yaziyoruz.   adminde paranterz icinde (self, obj) yazariz. self.img yerine obj.img yazilir. 
+
+
 
 admin.py
 ```python
@@ -457,35 +473,56 @@ from django.utils.safestring import mark_safe
         return mark_safe("******")
     
     bring_img_to_list.short_description = "product_image"
+    ## ürün icine girerek foto degistirebiliriz. 
 ```
 
 --------------------------------------------------------------------------------------
 
+
+
+
+
+
+
+
+
 # Customize templates
 
-default directory : env/lib/django/contrib/admin/templates/admin
+admin panel de bir django template idir. ve bunu customize edebiliyoruz. 
 
+default directory : env/lib/django/contrib/admin/templates/admin
+template ler burada yatar. degsiiklik yapacagimiz zaman bu dosyalara gidip orada yapmiyoruz. Cünkü env icinde kalir ve baskasi kullanamaz. o nedenle asagidaki sekillerde yapiyoruz. 
+
+    admin panel de gördügümüz sayfalarin isimleri su sekildedir: Hangi sayfada degisiklik yapacagizi buradan görebiliriz: 
+
+    ## admin panelde en cok kullandigimiz sayfalar:
 Liste Sayfası -> admin/change_list.html
 Ekleme ve Güncelleme Sayfaları -> admin/change_form.html
 Silme İşlemi İçin Onay Sayfası -> admin/delete_confirmation.html
-Modelin Geçmişi -> admin/object_history.html
+Modelin Geçmişi -> admin/object_history.html (Bir product da degisiklik yaptiysak o degisiklikler bu sayfada bulunur.)
 
+Daha detayli degisiklikler icin döküman incelenebilir. 
+
+    ## customize edilecek template ler icin asagidaki hiyerarsi izlenmeli: 
 admin/<extend_edilecek_sablon_adi>.html     >>>>>>> admin site ana sayfa
 admin/<app_adi>/<extend_edilecek_sablon_adi>.html   >>>>>>>>> applere özel
-admin/<app_adi>/<model_adi>/<extend_edilecek_sablon_adi>.html  >>>>>>>>>> modellere özel
+admin/<app_adi>/<model_adi>/<extend_edilecek_sablon_adi>.html  >>>>>>>>>> modellere özel (mesela product lara özel detay sayfasi degisecek ise.)
+
 
 settings.py:
 ```python
 'DIRS': [BASE_DIR, "templates"],
 ```
-ilk önce buraya bakar yoksa defaulta gider,
+normal de önce buraya bakmaz ama bu kod ile ilk buraya bakar. ilk önce buraya bakar yoksa defaulta gider,
 
-templates/admin/products/product/change_form.html
+ana dizinde su klasörler olusturulur: 
+templates/admin/products(app ismi)/product(model ismi)/change_form.html
 
 ** içi boş olduğu için Ekleme ve Güncelleme Sayfaları boş görünecek
 
 ** default olan change_forma gidip blockları bakabiliriz istediğimizi güncelleriz extend edip
 ```html
+orijinal olani extend ederiz. 
 {% extends 'admin/change_form.html' %}
 
 {% block form_top %}
@@ -493,14 +530,26 @@ templates/admin/products/product/change_form.html
 {% endblock  %}
 ```
 
+daha fazla alan degistirmek istersek bu sayfanin orijinaline gideriz orada istedigimiz block u alip customize edebiliriz. degistirmedigimiz alanlari orijinalden alir. digerleri bizimkiler olur. 
+
 -----------------------------------------------------------------------
 
-admin templates extends hierarchy:
+admin templates extends hierarchy: (isleyis su sekildedir. Biz change_form dan extend ettik o baska yerden o baska yerden) Biz direkt base_site i da extend edebiliriz. 
+
 base.html > base_site.html > change_form.html
 
-templates/admin/base_site.html
+    ana dizindeki klasörde su dosyalar olusturulur: 
+templates/admin/base_site.html (direkt admin altina, herhangi bir app altina degil)
+
 img directory :  contrib/admin/static/admin/img/clarusway.png
 add clarusway.png to this directory
+
+settings.py
+## ana dizindeki static klasörü icindeki static resimlere bak demek
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
+
 base_site.html
 ```html
 {% extends 'admin/base.html' %}
@@ -558,12 +607,35 @@ base_site.html
 {% endblock %}
 ```
 
+Bunlari ögrenmek icin bol bol template ler ile oynayacagiz. eger bozarsak calismazsa env silip yeniden calistiracagiz. 
+
+
+
+
+
+## Piyasada 150 $ a kadar django template ler satilir. 
+
+Bu değiştirilmiş bir django admin sayfasıdır -> https://spruko.com/demo/django/noa/Noa/HTML/index.html
+Google: django admin themes
+
+
 # THIRD PARTY PACKAGES
+daha cok sayida var bakabiliriz: 
 
 ### List-Filter Dropdown
 
 * https://github.com/mrts/django-admin-list-filter-dropdown
+bu sayfayi inceleyelim. dropdown var charfield var relatedfield lar icin özellikleri var. biz dropdown kulllandik 
 
+
+    # bu ayri birsey third party olmadan :
+product_admin da list_filter = ("is_in_stock", "create_date") satiri eklenir. istedigimiz alana göre filtreleme yapar.  Güzel bir özellik ama buraya name eklersek 199 tane isim filtrelemeye girer ve hos görünmez. kullanissiz oldu. Bu nedenle bunu third party kullandik .
+######
+
+
+
+
+## Bu da dropdown olarak filtre saglar. yani third party package ile filter ekler. 
 pip install django-admin-list-filter-dropdown
 
 INSTALLED_APPS = (
@@ -585,7 +657,18 @@ class ReviewAdmin(admin.ModelAdmin):
     )
 ```
 
+
+
+
+## Kendimiz bastan sona django admin panel dizayn et ve github a yükle. mülakatta arz et. 
+
+
+
+
 ### Django admin date range filter
+## ekranin sag üstünde date ve time ile filter saglar: 
+
+
 
 https://github.com/silentsokolov/django-admin-rangefilter
 
@@ -599,14 +682,24 @@ INSTALLED_APPS = (
 
 admin.py
 ```Python
-from rangefilter.filters import DateRangeFilter, DateTimeRangeFilter
+from rangefilter.filters import DateRangeFilter, DateTimeRangeFilter# modelimizde hangisini kullandi isek
 
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ("is_in_stock", ("create_date", DateTimeRangeFilter)) # modelde datetimefield kullandığımız için
 ```
 
+
+
+
+
+
 ### import - export
 
+## önemli verilerimizi import yada export etmeye yarar. sag üst kösede farkli formatlarda verilerimizi import export etme secenegi. 
+
+## biz import export u review de yaptik . istersek product ve digerlerinde de yapabiliriz. 
+
+## burada ayarlar var:
 https://django-import-export.readthedocs.io/en/latest/
 
 * pip install django-import-export
@@ -616,10 +709,10 @@ INSTALLED_APPS = (
     'import_export',
 )
 
-create resources.py
+create resources.py (product app altinda bu dosya olustur.) 
 ```python
 from import_export import resources
-from products.models import Review
+from product.models import Review
 
 class ReviewResource(resources.ModelResource):
 
@@ -631,25 +724,42 @@ class ReviewResource(resources.ModelResource):
 admin.py
 ```python
 from import_export.admin import ImportExportModelAdmin
-from products.resources import ReviewResource
+from product.resources import ReviewResource
 
+    ## ReviewAdmin inherit ettigimiz yer degisecek.  artik buradan ImportExportModelAdmin
 class ReviewAdmin(ImportExportModelAdmin):
 
     resource_class = ReviewResource
 ```
 
-### custom template (grapelli)
+
+
+
+
+
+
+
+
+
+### custom template (grapelli):
+## Grapelli sadece bir template. baska template lerde var. istersek bulabiliriz. 
+
+templates for django interface diye aranabilir. Django packages diye sayfa var orada bulunabilir. free olanlar da var bir tanesini deneyelim nasil kullanilir. 
+
+## Komple sayfanin görüntüsünü degistirir. Ancak foto felan ekledigimiz icin css de biraz sikintilar oldu. Bunlari customize edilebilir. 
 
 https://django-grappelli.readthedocs.io/en/latest/
 
 * pip install django-grappelli
 
+    en üstte olmali 
 INSTALLED_APPS = (
     'grappelli',    # en üstte olacak
     'django.contrib.admin',
 )
 
 
+    main.urls 
 from django.conf.urls import include
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS üstte olacak
