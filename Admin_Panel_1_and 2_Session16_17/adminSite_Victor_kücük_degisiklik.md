@@ -63,13 +63,11 @@ go to settings.py and add 'products' app to installed apps
 
 
 ---------------------------------------------------------------------------------------------------
-admin panel hemen hemen her projede vardir. cünkü auth islemleri buradan gerceklesir. 
 
 products/models.py
 
 ```python
 from django.db import models
-## ürünün detayina ulasmak icin /id koyairz. ama user bu id yi görmesin diye her bir ürün icin unique bir slug olusturulur. Bunu django da slugField yapar. 
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -104,14 +102,7 @@ admin.site.index_title = "Welcome to Clarusway Admin Portal"
 ```
 
 Add data with Faker package
-fake ürün bilgileri gimek icin kullanilir. 
-https://faker.readthedocs.io/en/master/
-
-
 * pip install Faker
-
-tek tek el ile veri girmek yerine istedigimiz kadar veri üretebiliriz. 
-asagida yazan islemleri normal views.py dan da yapabiliriz ama shell den daha basit. 
 
 py manage.py shell
 go to shell:
@@ -125,9 +116,7 @@ for i in range(1,200):
 	product.save()
 ```
 
-product.save() dememek icin product.objects.create kullanabiliirz. 
-
-go to admin site and check data (verileri görebilmek icin, admin panel de products tablosuna tiklamamiz gerekir.)
+go to admin site and check data 
 
 
 -------------------------------------------------------------------------------------------------
@@ -139,28 +128,24 @@ got to django admin site document and modelAdmin source
 
 
 some modelAdmin options:
-asagidaki kodlar admin.py da
 
 ```python
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("name", "create_date", "is_in_stock", "update_date")
     list_editable = ( "is_in_stock", )
-    # list_display_links = ("create_date", name) hangi veriler üzerinde link olsun istersek o verileri tuple icine yazariz.  
-    # #can't add items in list_editable to here
-    ## yani üzerinde tiklanacak link olan degerler edite edilemez. tiklama ile edit karismasin diye.  ama yine degistirmek istersek readonly_fields = ("bring_image",) kullanilir. 
+    # list_display_links = ("create_date", ) #can't add items in list_editable to here
     list_filter = ("is_in_stock", "create_date")
     ordering = ("name",)  
-    search_fields = ("name",) # bir tane input getirir admin panele. arama icin
+    search_fields = ("name",)
     prepopulated_fields = {'slug' : ('name',)}   # when adding product in admin site
     list_per_page = 25
-    date_hierarchy = "update_date" ## action in altinda bir tarih bölmesi cikarir. Bu tarihler arasinda oklar ile gezeriz. 
-    # fields = (('name', 'slug'), 'description', "is_in_stock") # ayni tuple icinde olanlari yan yana koyar. 
-    # #fieldset kullandığımız zaman bunu kullanamayız
+    date_hierarchy = "update_date"
+    # fields = (('name', 'slug'), 'description', "is_in_stock") #fieldset kullandığımız zaman bunu kullanamayız
 
     fieldsets = (
         (None, {
-            "deneme": (
+            "fields": (
                 ('name', 'slug'), "is_in_stock" # to display multiple fields on the same line, wrap those fields in their own tuple
             ),
             # 'classes': ('wide', 'extrapretty'), wide or collapse
@@ -192,10 +177,7 @@ actions section:
 
 Add methods to modelAdmin:
 
-
 ```python
-from django.utils import timezone
-
 		list_display = ("name", "create_date", "is_in_stock", "update_date", "added_days_ago")    
 	
 	    def added_days_ago(self, product):
@@ -209,7 +191,7 @@ from django.utils import timezone
 
 
 
-### RichText Editors (Description yazarken daha güzel bir editör)
+### RichText Editors
     WYSIWYG (what you see is what you get)
 
     https://djangopackages.org/grids/g/wysiwyg/
@@ -239,8 +221,6 @@ settings.py
             'width' : 1000
         }
     }
-
-    büyüklük ayarlari degistirilebilir. 
 ```
 * Note: ilgili template dosyasında: {{description | safe}}
 
@@ -285,7 +265,6 @@ class ReviewAdmin(admin.ModelAdmin):
 admin.site.register(Review, ReviewAdmin)
 ```
 
-asagidaki kod, her bir product icin 4 tane yorum üretir. yani 199 x 4 tane review olur. 
 shell
 ```
 from product.models import Product, Review
@@ -299,8 +278,6 @@ Review.objects.count()
 ```
 
 ### TabularInline
-Birden cok tabloyu bir sayfada gösterme saglar. 
-yani bir ürüne ait 4 yorum var. her bir yorum icin bir field acar. extra 1 dedigimiz icin 1 tane daha acar. 
 
 admin.py
 ```Python
@@ -333,9 +310,6 @@ class Product(models.Model):
 
 
 ### horizontal & vertical filter (ManytoMany Field)
-yukarida yaptigimiz islemler onetomany icindi. 
-Burada ise manytomany iliskili iki tablonun ayni admin panel de gösterilmesi
-
 
 models.py
 ```Python
@@ -374,10 +348,16 @@ from .models import Product, Review, Category
         })
     )
     filter_horizontal = ("categories", )
-   # filter_vertical = ("categories", )
+   # fitler_vertical = ("categories", )
 
 admin.site.register(Category)
 ```
+
+
+
+
+
+
 
 # Display Image Fields
 
@@ -410,12 +390,19 @@ models.py
 ```python
 from django.utils.safestring import mark_safe
 
+# create media folder and upload defaults/clarusway.png
 product_img = models.ImageField(null=True, blank=True, default="defaults/clarusway.png", upload_to="product/")
 
     def bring_image(self):
         if self.product_img:
             return mark_safe(f"<img src={self.product_img.url} width=400 height=400></img>")
         return mark_safe(f"<h3>{self.name} has not image </h3>")
+
+# OR in admin.py
+    def bring_image(self, obj):
+        if obj.product_img:
+            return mark_safe(f"<img src={obj.product_img.url} width=400 height=400></img>")
+        return mark_safe(f"<h3>{obj.name} has not image </h3>")
 ```
 
 * pip install pillow
@@ -476,7 +463,7 @@ settings.py:
 ```
 ilk önce buraya bakar yoksa defaulta gider,
 
-templates/admin/products/product/change_form.html
+templates/admin/product/product/change_form.html
 
 ** içi boş olduğu için Ekleme ve Güncelleme Sayfaları boş görünecek
 
@@ -495,7 +482,7 @@ admin templates extends hierarchy:
 base.html > base_site.html > change_form.html
 
 templates/admin/base_site.html
-img directory :  contrib/admin/static/admin/img/clarusway.png
+img directory :  static/images/clarusway.png
 add clarusway.png to this directory
 base_site.html
 ```html
@@ -505,7 +492,7 @@ base_site.html
 
 {% block branding %}
     <div class="myDiv">
-    <img src="{% static 'admin/img/clarusway.png' %}" style="height: 50px; width: 50px;" alt="">
+    <img src="{% static  'images/clarusway.png' %}" style="height: 50px; width: 50px;" alt="">
     <h1 id="head">
         Clarusway Admin Site
     </h1>
