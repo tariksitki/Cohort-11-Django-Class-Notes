@@ -50,7 +50,8 @@ router.register('student', StudentAllMethods) #? 3. 👈  For ViewSet APIView
 
 
     ## class based views  urls:
-    # Bazilarinda ayni url i kullandik o nedenle yoruma aldik. 
+    # Bazilarinda ayni url i kullandik o nedenle kullandiklarimizi yoruma aldik.
+    #  url lerdeki view lerin isimlerine bakarsak hangisi ne icin kullanilmis anlariz.  
 
 urlpatterns = [
     path('', home),
