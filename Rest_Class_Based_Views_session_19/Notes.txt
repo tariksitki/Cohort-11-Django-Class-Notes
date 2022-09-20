@@ -1,0 +1,4 @@
+
+class ve func based view lerin kullanim alani farkli olabilir. 
+customize etmeye cok ihtiyacimiz varsa;  func based daha mantikli. 
+
