@@ -1,0 +1,49 @@
+echo SECRET_KEY=j5bn45.n4b3 > .env 
+
+
+yada 
+
+cat > .env  yazip enter a basiyoruz.
+bize editörü aciyor. ve yaziyoruz
+SECRET_KEY=n5l43n5l43n5l4
+sonra ctrl c ile cikiyoruz. 
+
+
+django rest bize 3 tane pegination imkani sunar. 
+1: klasik sayfalama
+2: sql deki 10 ile 20 arasi gibi mesela 500. sayfadan itibaren 100 tane getir. 
+3: cursor u bir yere getiriyoruz. onun oldugu yerden itibaren mesela 5 tane ürün getir. 
+
+
+docs: https://www.django-rest-framework.org/api-guide/pagination/#pagenumberpagination
+
+
+    Bütün pegination islemleri icin 2 ayar vardir:
+
+global ayarlar settings.py da 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
+Bu ayardan sonra otomatik olarak her sayfada 10 tane ürün gelir. 
+frontend deki kisiler, toplam da kac ürün oldugunu görebilir
+10 dan fazla ürün görmek icin results secenegi kullanilir. 
+Bir önceki ve bir sonraki sayfanin linkini de gönderir 
+
+
+local ayarlar: 
+
+yukaridaki global ayardi. 
+lokal ayar icin views.py a gidiyoruz. ve view icine yaziyoruz. 
+pagination.py adinda dosya olusturduk
+
+
+faker docs da türkce yapma imkani da var. 
+
+
+
+Not: djangonun en önemli özelligi hizi degil, güvenliktir. 
+ayrica; developer icin cok kolaylik saglar. 
+
