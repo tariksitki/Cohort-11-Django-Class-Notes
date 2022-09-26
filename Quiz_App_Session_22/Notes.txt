@@ -1,0 +1,15 @@
+
+Bu projede api yazacagiz. Ve bu api den veri cekip front end de gösterecegiz. 
+
+echo "SECRET_KEY=&2)-y*63jx9e_=30dw75v9d25c&!q79ba5vnj%at8+!sv#i$f%" > .env
+
+en üstte category  tablosu
+altinda quiz tablosu 
+altinda Question tablosu 
+altinda answers tablosu 
+
+
+sadece get islemi yapacagiz. 
+
+kendimiz bu projeyi gelistirip user in girdigi verileri db ye gönderip basarili olup olmadigi ger dönülebilir. 
+
