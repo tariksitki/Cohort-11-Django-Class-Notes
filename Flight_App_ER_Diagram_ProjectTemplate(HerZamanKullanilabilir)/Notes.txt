@@ -1,0 +1,98 @@
+
+Bu projedeki template bizim  her zaman kullanabilecegimiz bir template. 
+
+Bu projedeki pdf dökümanini güzelce okuyalim. 
+
+BRD : Business Requirements Document (Mülakat icin bunlara calisalim)
+is isterleri dökümani
+
+SRC : Software Requirements   (bu developerlara daha yakin)
+
+
+Bazi app ler var bizim yerimize dökümantasyon hazirlar. 
+
+Dökümantasyon cok önemli olmazsa olmaz projelerde. 
+
+
+Her bir useCase in 3 soruya cevap vermesi gerekir. 
+
+epic(flight project), user story, task
+epic en büyük
+
+Product backlog lari product owner hazirlar. 
+Buradakiler sptint backlog lara alinir buna scrum master ve product owner karar verir. 
+
+task lar yapildi ise tamam 
+yapilmadi ise basa döner. 
+
+sonra 
+code 
+build 
+test 
+release (hazir olan versiyonun release edilmesi)
+deploy 
+
+entity relation diagram (ER diagram)
+
+many to many de ayri bir tablo olusur. 
+
+swagger documentation icin kullanilir. swagger kismi daha cok developerlari ilgilendirir.
+
+redoc daha cok son kullaniciyi ilgilendirir.
+
+Bizim olusturdugumuz api lerin documentation larini cikarir. 
+
+Pdf dökümaninda link var tiklayinca lms deki dökümana gider. 
+
+draw sql diye bir web sitesi var. Burada database tablolarini cizebiliyoruz. 
+Burada ders esnasinda olusturduk biz de yapalim. 
+
+https://drawsql.app/
+
+Burada many to many yok. Bunu yapmak icin 2 tablo arasinda iki tane iliski olustururuz. Bunlar birbirlerinin tersi istikametinde olur. ikisi de one to many olur. 
+
+
+
+## postgre ile calismak icin 
+
+pip install psycopg2
+
+    ### swagger:
+Backend tarafindan frontend tarafina bir docs vermek her zaman avantajli. swagger dinamic olarak bu docs lari saglar. 
+
+swagger bize bir user interface cikarir. 
+tüm kodlari tarar, ona göre docs hazirlar. 
+
+swagger kurunca redoc da gelir. bu ise swagger in daha özellestirilis halidir. 
+
+shopify nedir bakalim 
+
+yasg in docs undaki kod güncel degil. pdf dökümanindaki kodu alalim. 
+Bunu swagger i kurmak icin kullaniriz. 
+yasg bir seyin kisaltilmisi. 
+
+
+
+main iicnde settings diye klasör olusturduk. 
+bu bir modül oldu. 
+settings.py daki tüm kodlari alip bunun icindeki base.py a koyduk. 
+istersek settings.py i silebiliriz. sildik 
+
+
+
+settings.py da herseyin bir arada olmasi cok iyi degil. Bu nedenle prod da gerekli olanlar prod da dev le ilgili olanalr dev dosyasinda olmasini isterik. Bu nedenle settings diye bir klaösr olusturduk bu bizim icin bir moduül oldu.
+
+
+git ve github da branc ile calismanin tekrarini yapalim. 
+branch degistirmeler. pull request 
+
+
+
+
+
+
+
+
+
+
+
