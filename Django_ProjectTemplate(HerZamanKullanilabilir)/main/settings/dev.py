@@ -66,3 +66,7 @@ LOGGING = {
         },
     }, 
 }
+
+
+## burada yazdigimiz tempalte standart template. 
+

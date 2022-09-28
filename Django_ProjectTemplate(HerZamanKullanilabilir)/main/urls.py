@@ -20,6 +20,9 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+    ## drf yasg hem prod da hem de dev de kullanilir. Bu nedenle base.py da tanimlanir. 
+    ## buradaki hali temel bir app icin yeterli. docs ile gelistiriilebilir. 
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Flight Reservation API",
@@ -46,3 +49,8 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
         ## Bunu yaptiktan sonra swagger ekraninin saginda bir tus gelir. o tusa tiklayinca ekranin saginda debug ekrani acilir. eger acilmazsa browser F12 ye basilir. network e girilir ve burada cache deactivate yapilir. 
 ]
+
+# if DEBUG:
+#     path('__debug__/', include('debug_toolbar.urls')),
+# bu sekilde bir kullanimda var. yani debug == true ise demek. yani dev ortaminda isek 
+
