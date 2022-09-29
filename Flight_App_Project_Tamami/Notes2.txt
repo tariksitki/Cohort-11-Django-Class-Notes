@@ -1,0 +1,34 @@
+
+Bu 2. ders ve burada flight app in kendisini gelistirecegiz. Bir önceki derste auth kismini yaptik
+
+auth olmayan kullanicilar sadece ucus lari görebilecekler. 
+
+staff olamyanlar sadecec gelecek ucuslari görebilecekler. 
+staff member ise bizim tüm ucuslarimizi rezervasyonlar ile görebilecekler. 
+stafflar gecmis ucuslari görebilecek hatta ucus create edebilecek. 
+
+sadece login olanlar rezervasyon yapabilecek ve bunlar sadece kendi rezervasyonlarini görebilir. 
+
+staff olanlar ise rezervasyon create edebilecek.  ve bunlar tüm rezervasyonlari görebilecek. 
+
+
+        Yapimiz: 
+- Flights: 
+    + users:
+        -views upcoming flights
+    
+    + staff members:
+        -views all flights with reservations
+        - create flights
+
+- reservations :
+    + login_users:
+        - create reservations:
+        - views only their reservations
+
+    + staff_users:
+        - create reservations
+        - views all reservations
+
+
+## Bu proje cok detayli ve güzel bir proje. Bu projeye bir frontend yazabiliriz. 
