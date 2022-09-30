@@ -9,7 +9,7 @@ bu ayri bir app her yerde kullanilabilir.
 
 Bu projedeki template bizim  her zaman kullanabilecegimiz bir template. 
 
-Bu projedeki pdf dökümanini güzelce okuyalim. 
+Bu projedeki pdf dökümanini güzelce okuyalim.     
 
 BRD : Business Requirements Document (Mülakat icin bunlara calisalim)
 is isterleri dökümani
