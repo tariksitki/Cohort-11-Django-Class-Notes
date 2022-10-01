@@ -1,7 +1,7 @@
 
 
 #### Bu projede yaptigimiz authentication app ini tüm projelerimizde kullanabiliriz. 
-bu ayri bir app her yerde kullanilabilir.     
+bu ayri bir app her yerde kullanilabilir.         
 
 
 
