@@ -1,5 +1,5 @@
 bu projedeki account app i daha önce yaptigimiz auth derslerindeki islemlerden kopya ile alindi.
 aynisi.
 
-register oldugunda otomatik login olmasi icin token return ediyoruz. 
+register oldugunda otomatik login olmasi icin token return ediyoruz.     
 
