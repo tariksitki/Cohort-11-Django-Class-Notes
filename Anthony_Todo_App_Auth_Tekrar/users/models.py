@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User  
 
 
     ### profile icin ikinci bir tablo olusturuyoruz. Bu tabloyu user tablosuna baglariz. alternatif olarak bu iki tabloyu tek tabloda birlestirebilirdik. Ama su an ki yöntem daha esnek. 
