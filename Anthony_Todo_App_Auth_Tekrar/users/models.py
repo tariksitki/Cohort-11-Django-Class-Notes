@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     bio = models.TextField(blank=True)
 
     def __str__(self):
-        return self.user.username  ####  Dikkat
+        return self.user.username  ####  Dikkat  
 
     #   öenmli: buradaki blank ler olmayinca calismiyor. 
 
